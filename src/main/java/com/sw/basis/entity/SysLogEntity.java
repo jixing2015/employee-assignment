@@ -1,0 +1,92 @@
+package com.sw.basis.entity;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import java.util.Date;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * <p>
+ * 用户日志表
+ * </p>
+ *
+ * @author jixing2000
+ * @since 2022-07-07
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@TableName("sys_log")
+public class SysLogEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 主键
+     */
+    @TableId
+    private Integer id;
+
+    /**
+     * 用户名称
+     */
+    private String userCode;
+
+    /**
+     * 用户编号
+     */
+    private String userName;
+
+    /**
+     * IP地址
+     */
+    private String ip;
+
+    /**
+     * 请求方式
+     */
+    private String methodType;
+
+    /**
+     * URL
+     */
+    private String url;
+
+    /**
+     * 操作名称
+     */
+    private String actionName;
+
+    /**
+     * 参数
+     */
+    private String param;
+
+    /**
+     * 创建人
+     */
+    private String createBy;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 更新人
+     */
+    private String updateBy;
+
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
+
+    /**
+     * 是否删除;0表示未删除，1表示删除
+     */
+    private Integer delFlag;
+
+
+}

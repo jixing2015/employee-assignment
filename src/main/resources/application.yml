@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: dev
+  messages:
+    encoding: UTF-8
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  devtools:
+    restart:
+      enabled: false
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
+
+logging:
+  level:
+    com.sw.centerportal.mapper: debug

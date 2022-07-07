@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sw.basis.mapper.FlowMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sw.basis.entity.FlowEntity">
+        <result column="id" property="id" />
+        <result column="pid" property="pid" />
+        <result column="uuid" property="uuid" />
+        <result column="flow_type" property="flowType" />
+        <result column="action_name" property="actionName" />
+        <result column="apply_user_code" property="applyUserCode" />
+        <result column="apply_user_name" property="applyUserName" />
+        <result column="handler_code" property="handlerCode" />
+        <result column="handler_name" property="handlerName" />
+        <result column="state" property="state" />
+        <result column="comments" property="comments" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+</mapper>
