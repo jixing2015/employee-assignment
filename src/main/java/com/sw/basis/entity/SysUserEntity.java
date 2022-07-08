@@ -2,10 +2,11 @@ package com.sw.basis.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.util.Date;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -62,6 +63,11 @@ public class SysUserEntity implements Serializable {
      * 专业编号
      */
     private String expertType;
+
+    /**
+     * 状态
+     */
+    private Integer state;
 
     /**
      * 创建人

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-07-07
  */
 @RestController
-@RequestMapping("/basis/secondmentDemandEntity")
+@RequestMapping("/secondmentDemand")
 public class SecondmentDemandController {
 
 }

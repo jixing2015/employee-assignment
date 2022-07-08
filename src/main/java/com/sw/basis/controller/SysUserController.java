@@ -1,10 +1,19 @@
 package com.sw.basis.controller;
 
 
+import com.sw.basis.dto.query.SysUserQuery;
+import com.sw.basis.dto.response.SysUserDTO;
+import com.sw.basis.service.impl.SysUserServiceImpl;
+import com.sw.basis.utils.Responses;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -15,8 +24,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-07-07
  */
 @RestController
-@RequestMapping("/basis/sysUserEntity")
+@RequestMapping("/sysUser")
+@Api(tags = "用户接口")
 public class SysUserController {
 
+    @Resource
+    SysUserServiceImpl sysUserService;
+
+    final String GET_USER_LIST = "用户列表";
+    @ApiOperation(value = GET_USER_LIST)
+    @PostMapping("/getUserList")
+    public Responses<List<SysUserDTO>> getUserList(@RequestBody SysUserQuery query) {
+        return Responses.success(sysUserService.getUserList(query));
+    }
 }
 

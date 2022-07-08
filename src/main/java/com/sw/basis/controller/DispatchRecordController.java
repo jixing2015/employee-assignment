@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-07-07
  */
 @RestController
-@RequestMapping("/basis/dispatchRecordEntity")
+@RequestMapping("/dispatchRecord")
 public class DispatchRecordController {
 
 }

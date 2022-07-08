@@ -4,31 +4,21 @@ server:
     context-path: /employee-assignment/
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     # rewriteBatchedStatements=true是mysql批量处理配置
     url: jdbc:mysql://172.20.112.33:3306/employee_assignment?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8&useSSL=false&rewriteBatchedStatements=true
     username: employee_assigner
     password: allocateJobs-2022
     driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      maximum-pool-size: 200
-      minimum-idle: 20
-  servlet:
-    multipart:
-      max-file-size: 20MB
-      max-request-size: 1000MB
 
 mybatis-plus:
+  mapper-locations: classpath:basis/mapper/**/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.sw.basis.entity  # 注意：对应实体类的路径
+  # spring boot集成mybatis的方式打印sql
   configuration:
-    map-underscore-to-camel-case: true
-    auto-mapping-behavior: full
-    #控制台打印LOG，带SQL
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath*:/com/sw/basis/mapper/xml/*.xml
-  global-config:
-    # 逻辑删除配置
-    db-config:
-      # 删除前
-      logic-not-delete-value: 1
-      # 删除后
-      logic-delete-value: 0
+#    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl #不打印SQL
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #控制台打印LOG，带SQL
+    map-underscore-to-camel-case: true #开启自动下划线格式转驼峰格式

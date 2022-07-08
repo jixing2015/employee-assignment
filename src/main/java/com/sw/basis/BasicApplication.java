@@ -1,7 +1,7 @@
 package com.sw.basis;
 
 
-import tk.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 
 @MapperScan(basePackages = {"com.sw.basis.mapper"})
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication
 public class BasicApplication {
 
 	public static void main(String[] args) {

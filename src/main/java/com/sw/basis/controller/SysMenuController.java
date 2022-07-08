@@ -2,8 +2,6 @@ package com.sw.basis.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-07-07
  */
 @RestController
-@RequestMapping("/basis/sysMenuEntity")
+@RequestMapping("/sysMenu")
 public class SysMenuController {
 
 }

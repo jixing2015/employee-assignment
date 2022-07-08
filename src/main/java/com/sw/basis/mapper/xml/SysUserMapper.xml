@@ -12,6 +12,7 @@
         <result column="level_name" property="levelName" />
         <result column="register" property="register" />
         <result column="expert_type" property="expertType" />
+        <result column="state" property="state" />
         <result column="create_by" property="createBy" />
         <result column="create_time" property="createTime" />
         <result column="update_by" property="updateBy" />

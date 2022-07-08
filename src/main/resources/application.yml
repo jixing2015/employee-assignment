@@ -13,7 +13,3 @@ spring:
     admin:
       client:
         url: http://localhost:9090
-
-logging:
-  level:
-    com.sw.centerportal.mapper: debug
