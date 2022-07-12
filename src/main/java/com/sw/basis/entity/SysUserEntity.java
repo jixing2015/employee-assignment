@@ -2,6 +2,8 @@ package com.sw.basis.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sw.basis.utils.SeqUtil;
+import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -94,5 +96,19 @@ public class SysUserEntity implements Serializable {
      */
     private Integer delFlag;
 
-
+    /**
+     * 新增前初始化
+     **/
+    public void preInsert() {
+        String sysUserStr = SeqUtil.ServiceSeqName.SYS_USER;
+        Integer id = SeqUtil.nextValue(sysUserStr);
+        try {
+            this.setId(id);
+            this.setDelFlag(CommonInfo.DelFlag.UN_DEL);
+            this.setCreateTime(new Date());
+//            this.setCreateBy(LocalUserUtil.getCurrentUser().getCode());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

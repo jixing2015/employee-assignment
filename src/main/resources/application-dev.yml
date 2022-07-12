@@ -13,6 +13,18 @@ spring:
     username: employee_assigner
     password: allocateJobs-2022
     driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    database: 0
+    host: 172.20.112.32
+    port: 7379
+    password: uproauditredis
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+    timeout: 2000ms
 
 mybatis-plus:
   mapper-locations: classpath:basis/mapper/**/*.xml  #注意：一定要对应mapper映射xml文件的所在路径

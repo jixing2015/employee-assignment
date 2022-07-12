@@ -1,12 +1,14 @@
 package com.sw.basis.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sw.basis.dto.query.SysUserQuery;
+import com.sw.basis.dto.request.SysUserModifyDTO;
 import com.sw.basis.dto.response.SysUserDTO;
 import com.sw.basis.entity.SysUserEntity;
 import com.sw.basis.mapper.SysUserMapper;
 import com.sw.basis.service.SysUserService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sw.basis.utils.Responses;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -47,5 +49,20 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
             BeanUtils.copyProperties(sysUserEntity,sysUserDTO);
             return sysUserDTO;
         }).collect(Collectors.toList());
+    }
+
+    /**
+     * 新增
+     *
+     * @param dto 人员信息
+     * @return 成功/失败
+     **/
+    @Override
+    public Responses<String> add(SysUserModifyDTO dto) {
+        SysUserEntity sysUserEntity = new SysUserEntity();
+        BeanUtils.copyProperties(dto,sysUserEntity);
+        sysUserEntity.preInsert();
+        sysUserMapper.insert(sysUserEntity);
+        return Responses.success();
     }
 }

@@ -19,7 +19,7 @@ public class CommonInfo {
 	/**
 	 * 项目名称
 	 **/
-	public static String CONST_APP_NAME = "centerportal";
+	public static String CONST_APP_NAME = "emp_ass";
 
 	public static final String VARNAME_SSO_TOKEN_NAME = CONST_APP_NAME + "_" + "ssoToken";
 
@@ -64,7 +64,7 @@ public class CommonInfo {
 	/**
 	 * minio 文件系统 桶的名称
 	 **/
-	public static final String MINIO_BUCKET_NAME = "center-portal";
+	public static final String MINIO_BUCKET_NAME = "employee-assignment";
 	/**
 	 * 文件保存时，保存前使用此前缀
 	 **/

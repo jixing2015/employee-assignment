@@ -2,6 +2,7 @@ package com.sw.basis.controller;
 
 
 import com.sw.basis.dto.query.SysUserQuery;
+import com.sw.basis.dto.request.SysUserModifyDTO;
 import com.sw.basis.dto.response.SysUserDTO;
 import com.sw.basis.service.impl.SysUserServiceImpl;
 import com.sw.basis.utils.Responses;
@@ -36,6 +37,13 @@ public class SysUserController {
     @PostMapping("/getUserList")
     public Responses<List<SysUserDTO>> getUserList(@RequestBody SysUserQuery query) {
         return Responses.success(sysUserService.getUserList(query));
+    }
+
+    final String ADD = "新增";
+    @ApiOperation(value = ADD)
+    @PostMapping("/add")
+    public Responses<String> add(@RequestBody SysUserModifyDTO dto) {
+        return sysUserService.add(dto);
     }
 }
 

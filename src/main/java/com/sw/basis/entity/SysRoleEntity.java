@@ -2,10 +2,14 @@ package com.sw.basis.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.util.Date;
-import java.io.Serializable;
+import com.sw.basis.utils.LocalUserUtil;
+import com.sw.basis.utils.SeqUtil;
+import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -27,6 +31,11 @@ public class SysRoleEntity implements Serializable {
      */
     @TableId
     private Integer id;
+
+    /**
+     * 类型：0，普通角色；1,部门角色；2，岗位角色
+     */
+    private Integer roleType;
 
     /**
      * 角色编号
@@ -63,5 +72,17 @@ public class SysRoleEntity implements Serializable {
      */
     private Integer delFlag;
 
-
+    /**
+     * 新增前初始化
+     **/
+    public void preInsert() {
+        try {
+            this.setId(SeqUtil.nextValue(SeqUtil.ServiceSeqName.SYS_ROLE));
+            this.setDelFlag(CommonInfo.DelFlag.UN_DEL);
+            this.setCreateTime(new Date());
+            this.setCreateBy(LocalUserUtil.getCurrentUser().getCode());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
