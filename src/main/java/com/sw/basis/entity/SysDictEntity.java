@@ -90,7 +90,7 @@ public class SysDictEntity implements Serializable {
             this.setId(SeqUtil.nextValue(SeqUtil.ServiceSeqName.SYS_DICT));
             this.setDelFlag(CommonInfo.DelFlag.UN_DEL);
             this.setCreateTime(new Date());
-            this.setCreateBy(LocalUserUtil.getCurrentUser().getCode());
+            this.setCreateBy(LocalUserUtil.getCurrentUser() != null ? LocalUserUtil.getCurrentUser().getCode() : null);
         } catch (Exception e) {
             e.printStackTrace();
         }
