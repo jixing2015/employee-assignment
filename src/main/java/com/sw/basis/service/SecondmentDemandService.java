@@ -1,7 +1,9 @@
 package com.sw.basis.service;
 
-import com.sw.basis.entity.SecondmentDemandEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.entity.SecondmentDemandEntity;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2022-07-07
  */
 public interface SecondmentDemandService extends IService<SecondmentDemandEntity> {
+
+    List<SecondmentDemandEntity> getSecondmentDemandEntityList(List<SecondmentDemandEntity> secondmentDemandEntityList);
 
 }

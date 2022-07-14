@@ -1,7 +1,9 @@
 package com.sw.basis.service;
 
-import com.sw.basis.entity.SecondmentPeoplesEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.entity.SecondmentPeoplesEntity;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SecondmentPeoplesService extends IService<SecondmentPeoplesEntity> {
 
+    List<SecondmentPeoplesEntity> getSecondmentPeoplesEntityList(List<SecondmentPeoplesEntity> secondmentPeoplesEntityList);
 }

@@ -1,9 +1,13 @@
 package com.sw.basis.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sw.basis.entity.SecondmentDemandEntity;
 import com.sw.basis.mapper.SecondmentDemandMapper;
 import com.sw.basis.service.SecondmentDemandService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +20,17 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SecondmentDemandServiceImpl extends ServiceImpl<SecondmentDemandMapper, SecondmentDemandEntity> implements SecondmentDemandService {
+
+    @Override
+    public List<SecondmentDemandEntity> getSecondmentDemandEntityList(List<SecondmentDemandEntity> secondmentDemandEntityList) {
+
+        List<SecondmentDemandEntity> secondmentDemandEntityReturn = new ArrayList<>();
+        secondmentDemandEntityList.forEach(x -> {
+            x.preInsert();
+            secondmentDemandEntityReturn.add(x);
+        });
+        return secondmentDemandEntityReturn;
+    }
+
 
 }
