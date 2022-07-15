@@ -25,7 +25,7 @@ public class SecondmentPeoplesServiceImpl extends ServiceImpl<SecondmentPeoplesM
     public List<SecondmentPeoplesEntity> getSecondmentPeoplesEntityList(List<SecondmentPeoplesEntity> secondmentPeoplesEntityList) {
 
         List<SecondmentPeoplesEntity> secondmentPeoplesEntityReturn = new ArrayList<>();
-        secondmentPeoplesEntityList.forEach(x -> {
+        secondmentPeoplesEntityList.stream().forEach(x -> {
             x.preInsert();
             secondmentPeoplesEntityReturn.add(x);
         });

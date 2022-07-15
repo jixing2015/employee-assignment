@@ -25,7 +25,7 @@ public class SecondmentDemandServiceImpl extends ServiceImpl<SecondmentDemandMap
     public List<SecondmentDemandEntity> getSecondmentDemandEntityList(List<SecondmentDemandEntity> secondmentDemandEntityList) {
 
         List<SecondmentDemandEntity> secondmentDemandEntityReturn = new ArrayList<>();
-        secondmentDemandEntityList.forEach(x -> {
+        secondmentDemandEntityList.stream().forEach(x -> {
             x.preInsert();
             secondmentDemandEntityReturn.add(x);
         });

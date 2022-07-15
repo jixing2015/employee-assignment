@@ -101,7 +101,7 @@ public class SecondmentDemandController {
 
         if (bolDemand && bolRecord && bolPeoples && bolSysLog) {
             //返回成功结果
-            resultData = new ResultData<>();
+            resultData = new ResultData();
         } else {
             try {
                 //抛出异常，数据回滚
