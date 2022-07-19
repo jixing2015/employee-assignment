@@ -1,7 +1,7 @@
 package com.sw.basis.dto;
 /**
  * EnumUserDefinedError
- * @author jsxzshd
+ * @author jixing2000
  **/
 @SuppressWarnings("AlibabaEnumConstantsMustHaveComment")
 public enum EnumUserDefinedError {

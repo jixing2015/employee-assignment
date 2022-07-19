@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 
 /**
  * 序列表 service
- * @author jsxzshd
+ * @author jixing2000
  **/
 @Component
 public class SeqServiceImpl implements SeqService {

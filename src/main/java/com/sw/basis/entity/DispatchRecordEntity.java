@@ -7,7 +7,6 @@ import com.sw.basis.utils.SeqUtil;
 import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -21,9 +20,7 @@ import java.util.Date;
  */
 @Data
 @TableName("dispatch_record")
-public class DispatchRecordEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class DispatchRecordEntity {
 
     /**
      * 主键

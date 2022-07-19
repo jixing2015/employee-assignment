@@ -1,9 +1,19 @@
 package com.sw.basis.controller;
 
 
+import com.sw.basis.annotation.Log;
+import com.sw.basis.dto.request.ProjectModifyDTO;
+import com.sw.basis.service.ProjectService;
+import com.sw.basis.utils.Responses;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.lang.NonNull;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -13,9 +23,20 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jixing2000
  * @since 2022-07-07
  */
-@RestController
+@Api(tags = "项目表")
 @RequestMapping("/project")
+@RestController
 public class ProjectController {
 
+    @Resource
+    ProjectService projectService;
+
+    final static String ADD = "项目表_新增";
+    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
+    @ApiOperation(value = ADD)
+    @PostMapping(value = "/add")
+    public Responses<String> add(@RequestBody ProjectModifyDTO dto){
+        return projectService.add(dto);
+    }
 }
 

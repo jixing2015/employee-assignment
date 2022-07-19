@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * 公用信息
- * @author jsxzshd
+ * @author jixing2000
  **/
 public class CommonInfo {
 	/**

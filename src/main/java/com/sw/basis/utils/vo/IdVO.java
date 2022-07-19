@@ -11,17 +11,17 @@ import javax.validation.constraints.NotNull;
 @Data
 public class IdVO {
 
-    public static IdVO newIdVO(Long id){
+    public static IdVO newIdVO(Integer id){
         return new IdVO(id);
     }
 
     @NotNull
-    private Long id;
+    private Integer id;
 
     public IdVO() {
     }
 
-    public IdVO(@NotNull Long id) {
+    public IdVO(@NotNull Integer id) {
         this.id = id;
     }
 }

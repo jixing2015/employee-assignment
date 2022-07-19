@@ -2,7 +2,7 @@ package com.sw.basis.utils.constant;
 
 /**
  * 用于定义一些通用的常量
- * @author jsxzshd
+ * @author jixing2000
  */
 public class ResultConstant {
     /**

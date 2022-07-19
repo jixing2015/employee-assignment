@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * redis工具类
- * @author jsxzshd
+ * @author jixing2000
  */
 @Service
 public class RedisTemplateUtils {

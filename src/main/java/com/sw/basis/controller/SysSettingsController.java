@@ -1,8 +1,22 @@
 package com.sw.basis.controller;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.sw.basis.annotation.Log;
+import com.sw.basis.dto.query.SysSettingsPageDTO;
+import com.sw.basis.dto.request.SysSettingsModifyDTO;
+import com.sw.basis.dto.response.SysSettingsDTO;
+import com.sw.basis.service.SysSettingsService;
+import com.sw.basis.utils.Responses;
+import com.sw.basis.utils.vo.IdVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -12,9 +26,44 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jixing2000
  * @since 2022-07-07
  */
-@RestController
+@Api(tags = "系统设置")
 @RequestMapping("/sysSettings")
+@RestController
 public class SysSettingsController {
 
+    @Resource
+    SysSettingsService sysSettingsService;
+
+    final static String PAGE = "系统设置_列表";
+    @Log(desc = PAGE, type = Log.LOG_TYPE.SELECT)
+    @ApiOperation(value = PAGE)
+    @PostMapping(value = "/page")
+    public Responses<IPage<SysSettingsDTO>> page(@RequestBody SysSettingsPageDTO dto){
+        return sysSettingsService.page(dto);
+    }
+
+    final static String ADD = "系统设置_新增";
+    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
+    @ApiOperation(value = ADD)
+    @PostMapping(value = "/add")
+    public Responses<String> add(@RequestBody SysSettingsModifyDTO dto){
+        return sysSettingsService.add(dto);
+    }
+
+    final static String UPDATEBYID = "系统设置_根据id修改";
+    @Log(desc = UPDATEBYID, type = Log.LOG_TYPE.UPDATE)
+    @ApiOperation(value = UPDATEBYID)
+    @PostMapping(value = "/updateById")
+    public Responses<String> updateById(@RequestBody SysSettingsModifyDTO dto){
+        return sysSettingsService.updateById(dto);
+    }
+
+    final static String DEL = "系统设置_删除";
+    @Log(desc = DEL, type = Log.LOG_TYPE.DEL)
+    @ApiOperation(value = DEL)
+    @PostMapping(value = "/del")
+    public Responses<String> del(@RequestBody IdVO vo){
+        return sysSettingsService.del(vo.getId());
+    }
 }
 

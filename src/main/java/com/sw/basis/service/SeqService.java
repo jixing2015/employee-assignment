@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 序列表 service
- * @author jsxzshd
+ * @author jixing2000
  **/
 @Component
 public interface SeqService {

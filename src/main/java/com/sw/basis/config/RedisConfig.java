@@ -11,7 +11,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * redis配置
- * @author jsxzshd
+ * @author jixing2000
  */
 @Configuration
 public class RedisConfig {

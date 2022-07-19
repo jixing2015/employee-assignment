@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * 后端返给前端的信息格式
- * @author jsxzshd
+ * @author jixing2000
  **/
 @ApiModel(value ="ReturnMessage返回信息",description="后端返给前端的信息格式")
 public class ReturnMessage {

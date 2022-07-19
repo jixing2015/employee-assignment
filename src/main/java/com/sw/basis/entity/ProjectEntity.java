@@ -6,9 +6,7 @@ import com.sw.basis.utils.LocalUserUtil;
 import com.sw.basis.utils.SeqUtil;
 import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -20,11 +18,8 @@ import java.util.Date;
  * @since 2022-07-07
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 @TableName("project")
-public class ProjectEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class ProjectEntity {
 
     /**
      * 主键

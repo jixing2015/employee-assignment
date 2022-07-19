@@ -27,7 +27,7 @@ import java.util.Map.Entry;
 
 /**
  * 描述:通过封装applicationContext上线文 获取 spring bean对象
- * @author jsxzshd
+ * @author jixing2000
  */
 @Component
 @Slf4j

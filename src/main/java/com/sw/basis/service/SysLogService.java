@@ -2,6 +2,7 @@ package com.sw.basis.service;
 
 import com.sw.basis.entity.SysLogEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.utils.Responses;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SysLogService extends IService<SysLogEntity> {
 
+    Responses<String> addSysLog (SysLogEntity entity);
 }

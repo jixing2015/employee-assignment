@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 返回restful结果数据组装方法
- * @author jsxzshd
+ * @author jixing2000
  */
 public class ResultMethod {
 

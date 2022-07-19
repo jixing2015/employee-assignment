@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * 用户查询
- * @author jsxzshd
+ * @author jixing2000
  **/
 @Data
 public class SysUserQuery{

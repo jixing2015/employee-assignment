@@ -5,14 +5,12 @@ import com.sw.basis.entity.SysUserEntity;
 
 /**
  * 全局用户信息
- * @author jsxzshd
+ * @author jixing2000
  **/
 public class LocalUserUtil {
 
-	/**
-	 * 保存SyUser，在拦截器中添加、删除相关用户数据
-	 */
-	private static final ThreadLocal<SysUserEntity> USER_ENTITY_THREAD_LOCAL = new ThreadLocal<SysUserEntity>();
+	/** 保存SyUser，在拦截器中添加、删除相关用户数据 */
+	private static final ThreadLocal<SysUserEntity> USER_ENTITY_THREAD_LOCAL = new ThreadLocal<>();
 
 	/**
 	 * 在拦截器方法执行前调用设置获取用户

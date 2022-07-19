@@ -2,7 +2,7 @@ package com.sw.basis.utils.exception;
 
 /**
  * 异常
- * @author jsxzshd
+ * @author jixing2000
  **/
 public class MyException extends RuntimeException {
 

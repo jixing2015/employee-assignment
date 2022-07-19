@@ -24,9 +24,9 @@ import java.util.List;
  * @author jixing2000
  * @since 2022-07-07
  */
-@RestController
-@RequestMapping("/sysUser")
 @Api(tags = "用户接口")
+@RequestMapping("/sysUser")
+@RestController
 public class SysUserController {
 
     @Resource

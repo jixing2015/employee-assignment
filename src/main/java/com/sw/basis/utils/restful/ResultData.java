@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * 返回数据
- * @author jsxzshd
+ * @author jixing2000
  **/
 @Data
 public class ResultData<T> {

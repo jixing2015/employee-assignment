@@ -4,7 +4,7 @@ import com.sw.basis.service.SeqService;
 
 /**
  * 序列工具类
- * @author jsxzshd
+ * @author jixing2000
  **/
 
 public class SeqUtil {

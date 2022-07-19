@@ -3,7 +3,7 @@ package com.sw.basis.utils.restful;
 import com.google.common.collect.Lists;
 /**
  * 返回代码
- * @author jsxzshd
+ * @author jixing2000
  **/
 @SuppressWarnings("AlibabaEnumConstantsMustHaveComment")
 public enum ResultCode {
