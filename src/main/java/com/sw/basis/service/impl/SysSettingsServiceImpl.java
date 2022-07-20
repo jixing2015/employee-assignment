@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -42,7 +43,7 @@ public class SysSettingsServiceImpl extends ServiceImpl<SysSettingsMapper, SysSe
     @Override
     public Responses<IPage<SysSettingsDTO>> page(SysSettingsPageDTO dto) {
         QueryWrapper<SysSettingsEntity> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(SysSettingsEntity::getPlage,dto.getPlage());
+        wrapper.lambda().eq(SysSettingsEntity::getPlageCode,dto.getPlageCode());
         Page<SysSettingsEntity> page = new Page<>(dto.getPageNum(),dto.getPageSize());
         IPage<SysSettingsEntity> list = settingsMapper.selectPage(page,wrapper);
         return Responses.success(list.convert(sysSettingsEntity -> {
@@ -96,6 +97,24 @@ public class SysSettingsServiceImpl extends ServiceImpl<SysSettingsMapper, SysSe
         entity.setDelFlag(StateConstant.DEL);
         settingsMapper.updateById(entity);
         return Responses.success();
+    }
+
+    /**
+     * 系统设置-详情
+     *
+     * @param plageCode 板块编号
+     * @return 配置详情
+     **/
+    @Override
+    public Responses<SysSettingsDTO> detail(String plageCode) {
+        QueryWrapper<SysSettingsEntity> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(SysSettingsEntity::getPlageCode,plageCode);
+        List<SysSettingsEntity> list = settingsMapper.selectList(wrapper);
+        SysSettingsDTO dto = new SysSettingsDTO();
+        if(list != null && list().size() > 0){
+            BeanUtils.copyProperties(list.get(0),dto);
+        }
+        return Responses.success(dto);
     }
 
 }

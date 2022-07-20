@@ -50,4 +50,12 @@ public interface SysSettingsService extends IService<SysSettingsEntity> {
      **/
     Responses<String> del(Integer id);
 
+    /**
+     * 系统设置-详情
+     * @param plageCode 板块编号
+     *
+     * @return 配置详情
+     **/
+    Responses<SysSettingsDTO> detail(String plageCode);
+
 }

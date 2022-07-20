@@ -29,9 +29,9 @@ public class DispatchRecordEntity {
     private Integer id;
 
     /**
-     * 派遣编号
+     * 订单号
      */
-    private String dispatchCode;
+    private String orderId;
 
     /**
      * 用户编号

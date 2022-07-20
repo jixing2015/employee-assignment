@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sw.basis.dto.query.personnelDimensionPageDTO;
 import com.sw.basis.dto.query.projectDimensionPageDTO;
+import com.sw.basis.dto.request.DispatchDTO;
 import com.sw.basis.dto.response.DispatchRecordDTO;
 import com.sw.basis.entity.DispatchRecordEntity;
 import com.sw.basis.utils.Responses;
@@ -33,4 +34,28 @@ public interface DispatchRecordService extends IService<DispatchRecordEntity> {
      * @return 分页列表
      **/
     Responses<IPage<DispatchRecordDTO>> pageByProjectDimension(projectDimensionPageDTO dto);
+
+    /**
+     * 创建订单号
+     * @param projectCode 项目编号
+     *
+     * @return 订单号
+     **/
+    String createOrderId(String projectCode);
+
+    /**
+     * 派遣
+     * @param dto 表单
+     *
+     * @return 成功/失败
+     **/
+    Responses<String> dispatch(DispatchDTO dto);
+
+    /**
+     * 取消派遣
+     * @param dto 表单
+     *
+     * @return 成功/失败
+     **/
+    Responses<String> unDispatch(DispatchDTO dto);
 }

@@ -7,7 +7,14 @@
         <result column="id" property="id" />
         <result column="code" property="code" />
         <result column="name" property="name" />
+        <result column="plage_code" property="plageCode" />
+        <result column="plage_name" property="plageName" />
+        <result column="area_code" property="areaCode" />
+        <result column="area_name" property="areaName" />
         <result column="dept_code" property="deptCode" />
+        <result column="dept_name" property="deptName" />
+        <result column="line_code" property="lineCode" />
+        <result column="line_name" property="lineName" />
         <result column="level_code" property="levelCode" />
         <result column="level_name" property="levelName" />
         <result column="register" property="register" />

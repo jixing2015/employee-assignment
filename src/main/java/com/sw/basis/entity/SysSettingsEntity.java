@@ -8,7 +8,6 @@ import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -22,9 +21,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_settings")
-public class SysSettingsEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class SysSettingsEntity {
 
     /**
      * 主键
@@ -33,9 +30,19 @@ public class SysSettingsEntity implements Serializable {
     private Integer id;
 
     /**
-     * 所属板块
+     * 所属板块编号
      */
-    private String plage;
+    private String plageCode;
+
+    /**
+     * 所属板块名称
+     */
+    private String plageName;
+
+    /**
+     * 人员空闲最大展示周期（天）
+     **/
+    private Integer personnelIdleMax;
 
     /**
      * 每人每日可派遣项目数量上限（天）

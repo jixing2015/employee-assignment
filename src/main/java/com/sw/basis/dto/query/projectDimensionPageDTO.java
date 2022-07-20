@@ -17,14 +17,14 @@ import lombok.Data;
 @Data
 public class projectDimensionPageDTO extends Pageable {
 
-    @ApiModelProperty(value = "板块")
-    private String plage;
+    @ApiModelProperty(value = "板块编号")
+    private String plageCode;
 
-    @ApiModelProperty(value = "区域")
-    private String area;
+    @ApiModelProperty(value = "区域编号")
+    private String areaCode;
 
-    @ApiModelProperty(value = "业务条线")
-    private String line;
+    @ApiModelProperty(value = "业务条线编号")
+    private String lineCode;
 
     @ApiModelProperty(value = "部门编号")
     private String deptCode;

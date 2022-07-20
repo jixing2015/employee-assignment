@@ -21,8 +21,14 @@ public class SysSettingsDTO {
     @ApiModelProperty(value = "主键")
     private Integer id;
 
-    @ApiModelProperty(value = "所属板块")
-    private String plage;
+    @ApiModelProperty(value = "所属板块编号")
+    private String plageCode;
+
+    @ApiModelProperty(value = "所属板块名称")
+    private String plageName;
+
+    @ApiModelProperty(value = "人员空闲最大展示周期（天）")
+    private Integer personnelIdleMax;
 
     @ApiModelProperty(value = "每人每日可派遣项目数量上限（天）")
     private Integer projectNumMax;

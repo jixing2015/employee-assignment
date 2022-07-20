@@ -43,9 +43,44 @@ public class SysUserEntity implements Serializable {
     private String name;
 
     /**
+     * 板块编号
+     */
+    private String plageCode;
+
+    /**
+     * 板块名称
+     */
+    private String plageName;
+
+    /**
+     * 区域编号
+     */
+    private String areaCode;
+
+    /**
+     * 区域名称
+     */
+    private String areaName;
+
+    /**
      * 部门编号
      */
     private String deptCode;
+
+    /**
+     * 部门名称
+     */
+    private String deptName;
+
+    /**
+     * 条线编号
+     */
+    private String lineCode;
+
+    /**
+     * 条线名称
+     */
+    private String lineName;
 
     /**
      * 职级编号

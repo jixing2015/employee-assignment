@@ -5,7 +5,9 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.sw.basis.entity.SysSettingsEntity">
         <result column="id" property="id" />
-        <result column="plage" property="plage" />
+        <result column="plage_code" property="plageCode" />
+        <result column="plage_name" property="plageName" />
+        <result column="personnel_idle_max" property="personnelIdleMax" />
         <result column="project_num_max" property="projectNumMax" />
         <result column="work_hours_max" property="workHoursMax" />
         <result column="cycle_max" property="cycleMax" />

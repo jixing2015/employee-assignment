@@ -4,7 +4,7 @@ package com.sw.basis.dto;
  * @author jixing2000
  **/
 @SuppressWarnings("AlibabaEnumConstantsMustHaveComment")
-public enum EnumUserDefinedError {
+public enum DefinedErrorEnum {
     NO_ERROR (0, "", ""),
     NOT_LOGGEDIN (-1, "user not logged in", "用户未登录"),
     USER_NOT_EXISTS (-2, "user does not exist", "用户不存在"),
@@ -90,7 +90,7 @@ public enum EnumUserDefinedError {
     private int value;
     private String message, messageSecond;
     
-    EnumUserDefinedError(int value, String message, String messageSec) {
+    DefinedErrorEnum(int value, String message, String messageSec) {
         this.value = value;
         this.message= message;
         this.messageSecond = messageSec;

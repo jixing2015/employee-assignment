@@ -22,8 +22,8 @@ public class DispatchRecordDTO {
     @ApiModelProperty(value = "主键")
     private Integer id;
 
-    @ApiModelProperty(value = "派遣编号")
-    private String dispatchCode;
+    @ApiModelProperty(value = "订单号")
+    private String orderId;
 
     @ApiModelProperty(value = "用户编号")
     private String userCode;

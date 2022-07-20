@@ -23,7 +23,7 @@ public class ReturnMessage {
         this.msg = msg;
     }
     
-    public ReturnMessage(EnumUserDefinedError udfError, String lang){
+    public ReturnMessage(DefinedErrorEnum udfError, String lang){
         error = udfError.getValue();
         msg = udfError.getMessage(lang);
     }

@@ -1,7 +1,9 @@
 package com.sw.basis.service;
 
-import com.sw.basis.entity.FlowEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.dto.ValidateVO;
+import com.sw.basis.entity.FlowEntity;
+import com.sw.basis.utils.Responses;
 
 /**
  * <p>
@@ -13,4 +15,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface FlowService extends IService<FlowEntity> {
 
+    /**
+     * 校验
+     * @param vo 校验所需条件
+     *
+     * @return 成功/提示
+     **/
+    Responses<String> validate(ValidateVO vo);
 }

@@ -25,7 +25,7 @@ public class personnelDimensionPageDTO extends Pageable {
     @ApiModelProperty(value = "结束时间")
     private Date endTime;
 
-    @ApiModelProperty(value = "板块")
+    @ApiModelProperty(value = "jixing2000")
     private String plage;
 
     @ApiModelProperty(value = "区域")
