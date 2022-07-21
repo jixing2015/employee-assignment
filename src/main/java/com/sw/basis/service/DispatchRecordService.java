@@ -36,14 +36,6 @@ public interface DispatchRecordService extends IService<DispatchRecordEntity> {
     Responses<IPage<DispatchRecordDTO>> pageByProjectDimension(projectDimensionPageDTO dto);
 
     /**
-     * 创建订单号
-     * @param projectCode 项目编号
-     *
-     * @return 订单号
-     **/
-    String createOrderId(String projectCode);
-
-    /**
      * 派遣
      * @param dto 表单
      *

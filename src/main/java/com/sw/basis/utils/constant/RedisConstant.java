@@ -3,7 +3,6 @@ package com.sw.basis.utils.constant;
 /**
  * Redis 常量
  * @Author jixing2000
- * @Date 2022/3/21 0021 9:30:04
  **/
 public interface RedisConstant {
 
@@ -33,7 +32,12 @@ public interface RedisConstant {
     String CENTERPORTAL_USER_INFO = "emp_ass_user_info";
 
     /**
-     * 中台前缀
+     * 人员派遣前缀
      */
     String CENTERPORTAL_PREFIX = "emp_ass_";
+
+    /**
+     * Redis Key 发起的需求数量
+     */
+    String ORDER_ID_SEQ = "emp_ass_order_id";
 }

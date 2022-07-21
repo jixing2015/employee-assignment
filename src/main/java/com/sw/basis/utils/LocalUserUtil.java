@@ -1,5 +1,6 @@
 package com.sw.basis.utils;
 
+import com.sw.basis.utils.enums.ResultCode;
 import com.sw.basis.utils.exception.MyException;
 import com.sw.basis.entity.SysUserEntity;
 
@@ -17,7 +18,7 @@ public class LocalUserUtil {
 	 */
 	public static void addCurrentUser(SysUserEntity user) {
 		if(user == null){
-			throw new MyException("用户信息为空");
+			throw new MyException(ResultCode.USER_NOT_FOUND.code,ResultCode.USER_NOT_FOUND.message);
 		}
 		USER_ENTITY_THREAD_LOCAL.set(user);
 	}
@@ -26,6 +27,9 @@ public class LocalUserUtil {
 	 * 获取当前登录用户
 	 */
 	public static SysUserEntity getCurrentUser() {
+		if(USER_ENTITY_THREAD_LOCAL.get() == null){
+			throw new MyException(ResultCode.USER_NOT_FOUND.code,ResultCode.USER_NOT_FOUND.message);
+		}
 		return USER_ENTITY_THREAD_LOCAL.get();
 	}
 
@@ -33,6 +37,9 @@ public class LocalUserUtil {
 	 * 删除当前用户
 	 */
 	public static void removeCurrentUser() {
+		if(USER_ENTITY_THREAD_LOCAL.get() == null){
+			throw new MyException(ResultCode.USER_NOT_FOUND.code,ResultCode.USER_NOT_FOUND.message);
+		}
 		USER_ENTITY_THREAD_LOCAL.remove();
 	}
 
