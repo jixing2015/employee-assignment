@@ -8,10 +8,14 @@ import com.sw.basis.dto.DefinedErrorEnum;
 import com.sw.basis.dto.ValidateVO;
 import com.sw.basis.dto.query.personnelDimensionPageDTO;
 import com.sw.basis.dto.query.projectDimensionPageDTO;
-import com.sw.basis.dto.request.DispatchDTO;
+import com.sw.basis.dto.request.*;
 import com.sw.basis.dto.response.DispatchRecordDTO;
+import com.sw.basis.entity.DispatchPeoplesEntity;
+import com.sw.basis.entity.DispatchProjectEntity;
 import com.sw.basis.entity.DispatchRecordEntity;
 import com.sw.basis.mapper.DispatchRecordMapper;
+import com.sw.basis.service.DispatchPeoplesService;
+import com.sw.basis.service.DispatchProjectService;
 import com.sw.basis.service.DispatchRecordService;
 import com.sw.basis.service.FlowService;
 import com.sw.basis.utils.Responses;
@@ -21,6 +25,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -37,6 +44,10 @@ public class DispatchRecordServiceImpl extends ServiceImpl<DispatchRecordMapper,
     FlowService flowService;
     @Resource
     DispatchRecordMapper dispatchRecordMapper;
+    @Resource
+    DispatchProjectService dispatchProjectService;
+    @Resource
+    DispatchPeoplesService dispatchPeoplesService;
 
     /**
      * 项目派遣-人员维度-分页列表
@@ -85,18 +96,55 @@ public class DispatchRecordServiceImpl extends ServiceImpl<DispatchRecordMapper,
     public Responses<String> dispatch(DispatchDTO dto) {
         //创建订单号
         String orderId = SerialNumberUtil.createOrderId();
+        //实体类转换
+        List<ProjectModifyDTO> projectList = new ArrayList<>();
+        List<DispatchProjectEntity> dispatchProjectEntityList = new ArrayList<>();
+        if(dto.getProjectList() != null ){
+            dto.getProjectList().forEach(dispatchProjectModifyDTO -> {
+                ProjectModifyDTO projectModifyDTO = new ProjectModifyDTO();
+                projectModifyDTO.setProjectCode(dispatchProjectModifyDTO.getProjectCode());
+                projectModifyDTO.setProjectName(dispatchProjectModifyDTO.getProjectName());
+                projectList.add(projectModifyDTO);
+            });
+            dispatchProjectEntityList = dto.getProjectList().stream().map(dispatchProjectModifyDTO -> {
+                DispatchProjectEntity dispatchProjectEntity = new DispatchProjectEntity();
+                BeanUtils.copyProperties(dispatchProjectModifyDTO,dispatchProjectEntity);
+                return dispatchProjectEntity;
+            }).collect(Collectors.toList());
+        }
+        List<SysUserModifyDTO> userList = new ArrayList<>();
+        List<DispatchPeoplesEntity> dispatchPeoplesEntityList = new ArrayList<>();
+        if(dto.getUserList() != null){
+            dto.getUserList().forEach(dispatchPeoplesModifyDTO -> {
+                SysUserModifyDTO sysUserModifyDTO = new SysUserModifyDTO();
+                sysUserModifyDTO.setCode(dispatchPeoplesModifyDTO.getUserCode());
+                sysUserModifyDTO.setName(dispatchPeoplesModifyDTO.getUserName());
+                userList.add(sysUserModifyDTO);
+            });
+            dispatchPeoplesEntityList = dto.getUserList().stream().map(dispatchPeoplesModifyDTO -> {
+                DispatchPeoplesEntity dispatchPeoplesEntity = new DispatchPeoplesEntity();
+                BeanUtils.copyProperties(dispatchPeoplesModifyDTO,dispatchPeoplesEntity);
+                return dispatchPeoplesEntity;
+            }).collect(Collectors.toList());
+        }
         //校验
         ValidateVO vo = new ValidateVO();
         vo.setStartTime(dto.getStartTime());
         vo.setEndTime(dto.getEndTime());
-        vo.setProjectList(dto.getProjectList());
-        vo.setUserList(dto.getUserList());
+        vo.setProjectList(projectList);
+        vo.setUserList(userList);
         Responses validateResp = flowService.validate(vo);
         //校验失败，返回提示
         if(validateResp.getError() != DefinedErrorEnum.NO_ERROR.getValue()){
             return validateResp;
         }
-        //todo 派遣
+        DispatchRecordEntity dispatchRecordEntity = new DispatchRecordEntity();
+        BeanUtils.copyProperties(dto,dispatchRecordEntity);
+        dispatchRecordEntity.preInsert();
+        dispatchRecordEntity.setOrderId(orderId);
+        dispatchRecordMapper.insert(dispatchRecordEntity);
+        dispatchProjectService.saveBatch(dispatchProjectEntityList);
+        dispatchPeoplesService.saveBatch(dispatchPeoplesEntityList);
         return Responses.success();
     }
 

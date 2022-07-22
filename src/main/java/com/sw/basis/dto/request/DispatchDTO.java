@@ -26,7 +26,7 @@ public class DispatchDTO {
     private Integer hoursPerDay;
 
     @ApiModelProperty(value = "项目列表")
-    private List<ProjectModifyDTO> projectList;
+    private List<DispatchProjectModifyDTO> projectList;
 
     @ApiModelProperty(value = "执业地点")
     private String address;
@@ -35,6 +35,6 @@ public class DispatchDTO {
     private Integer settlement;
 
     @ApiModelProperty(value = "人员列表")
-    private List<SysUserModifyDTO> userList;
+    private List<DispatchPeoplesModifyDTO> userList;
 
 }

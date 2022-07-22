@@ -215,12 +215,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * 编写者:Alex Du
-	 * <p>
-	 * 创建时间:2018年8月15日 下午3:58:54
-	 * <p>
 	 * 描述:返回两个日期相差天数
-	 * <p>
 	 * 参数:@param fDate 参数:@param oDate 参数:@return
 	 */
 	public static int daysOfTwo(Date fDate, Date oDate) {
@@ -285,6 +280,46 @@ public class DateUtils {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * 比较时间大小
+	 * @param date1 时间1
+	 * @param date2 时间2
+	 * @return 结果 1表示date1在date2之后  0表示相等  -1 表示date1在date2之前
+	 */
+	public static int compareDate(String date1, String date2) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			Date dt1 = sdf.parse(date1);
+			Date dt2 = sdf.parse(date2);
+			if (dt1.getTime() > dt2.getTime()) {
+				return 1;
+			} else if (dt1.getTime() < dt2.getTime()) {
+				return -1;
+			} else {
+				return 0;
+			}
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+		return 0;
+	}
+
+	/**
+	 * 两个日期相减得到的天数
+	 *
+	 * @param beginDate 开始时间（被减）
+	 * @param endDate 结束时间
+	 * @return 返回正数，表示beginDate在endDate之前；0表示相等；负数表示beginDate在endDate之后
+	 */
+	public static int getDiffDays(Date beginDate, Date endDate) {
+		if (beginDate == null || endDate == null) {
+			throw new IllegalArgumentException("getDiffDays param is null!");
+		}
+		long diff = (endDate.getTime() - beginDate.getTime()) / (1000 * 60 * 60 * 24);
+		int days = new Long(diff).intValue();
+		return days;
 	}
 
 }
