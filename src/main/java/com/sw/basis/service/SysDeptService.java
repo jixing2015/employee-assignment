@@ -17,6 +17,13 @@ import com.sw.basis.utils.Responses;
 public interface SysDeptService extends IService<SysDeptEntity> {
 
     /**
+     * 根据部门编号获取板块信息
+     * @param deptCode 部门编号
+     *
+     * @return 板块信息
+     **/
+    SysDeptEntity getPlageByDeptCode(String deptCode);
+    /**
      * 部门表-新增
      * @param departmentInformationDTO 内容
      *

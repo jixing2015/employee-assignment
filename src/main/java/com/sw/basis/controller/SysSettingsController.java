@@ -6,11 +6,14 @@ import com.sw.basis.annotation.Log;
 import com.sw.basis.dto.query.SysSettingsPageDTO;
 import com.sw.basis.dto.request.SysSettingsModifyDTO;
 import com.sw.basis.dto.response.SysSettingsDTO;
+import com.sw.basis.entity.SysSettingsEntity;
 import com.sw.basis.service.SysSettingsService;
 import com.sw.basis.utils.Responses;
+import com.sw.basis.utils.vo.CodeVO;
 import com.sw.basis.utils.vo.IdVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,6 +67,19 @@ public class SysSettingsController {
     @PostMapping(value = "/del")
     public Responses<String> del(@RequestBody IdVO vo){
         return sysSettingsService.del(vo.getId());
+    }
+
+    final static String DETAIL = "系统设置_详情";
+    @Log(desc = DETAIL, type = Log.LOG_TYPE.SELECT)
+    @ApiOperation(value = DETAIL)
+    @PostMapping(value = "/detail")
+    public Responses<SysSettingsDTO> detail(@RequestBody CodeVO vo){
+        SysSettingsEntity sysSettingsEntity = sysSettingsService.detail(vo.getCode());
+        SysSettingsDTO dto = new SysSettingsDTO();
+        if(sysSettingsEntity != null){
+            BeanUtils.copyProperties(sysSettingsEntity,dto);
+        }
+        return Responses.success(dto);
     }
 }
 

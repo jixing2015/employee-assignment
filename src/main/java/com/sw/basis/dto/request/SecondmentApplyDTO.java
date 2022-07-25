@@ -9,7 +9,6 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +19,7 @@ import java.util.List;
 
 @ApiModel("借调申请入参")
 @Data
-public class SecondmentApplyDTO implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class SecondmentApplyDTO {
 
     @ApiModelProperty(name = "申请部门编号", notes = "不能为空")
     @NotBlank

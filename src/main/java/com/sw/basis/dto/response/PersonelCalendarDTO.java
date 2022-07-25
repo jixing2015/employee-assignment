@@ -8,7 +8,7 @@ import lombok.Data;
  * @author jixing2000
  * @date 2022/7/20 0020 15:39:43
  **/
-@ApiModel(value = "校验 VO")
+@ApiModel(value = "个人日历 DTO")
 @Data
 public class PersonelCalendarDTO {
 
