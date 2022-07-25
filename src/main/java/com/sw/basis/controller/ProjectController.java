@@ -2,18 +2,19 @@ package com.sw.basis.controller;
 
 
 import com.sw.basis.annotation.Log;
+import com.sw.basis.dto.request.ProjectInformationDTO;
 import com.sw.basis.dto.request.ProjectModifyDTO;
 import com.sw.basis.service.ProjectService;
 import com.sw.basis.utils.Responses;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.lang.NonNull;
+
+import javax.annotation.Resource;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * <p>
@@ -38,5 +39,16 @@ public class ProjectController {
     public Responses<String> add(@RequestBody ProjectModifyDTO dto){
         return projectService.add(dto);
     }
+
+
+    final static String ACCEPT = "接受信天游项目信息";
+    @Log(desc = ACCEPT, type = Log.LOG_TYPE.ADD)
+    @ApiOperation(value = ACCEPT)
+    @PostMapping("/accept")
+    public Responses<String> accept(@RequestBody ProjectInformationDTO projectInformationDTO) {
+        return projectService.accept(projectInformationDTO);
+    }
+
+
 }
 

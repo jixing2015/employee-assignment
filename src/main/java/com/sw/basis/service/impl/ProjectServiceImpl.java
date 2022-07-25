@@ -1,6 +1,7 @@
 package com.sw.basis.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sw.basis.dto.request.ProjectInformationDTO;
 import com.sw.basis.dto.request.ProjectModifyDTO;
 import com.sw.basis.entity.ProjectEntity;
 import com.sw.basis.mapper.ProjectMapper;
@@ -50,6 +51,21 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
     public Responses<String> updateById(ProjectModifyDTO dto) {
         ProjectEntity entity = new ProjectEntity();
         BeanUtils.copyProperties(dto,entity);
+        projectMapper.updateById(entity);
+        return Responses.success();
+    }
+
+
+    /**
+     * 项目派遣-接受信天游项目信息
+     * @param projectInformationDTO 信天游项目信息
+     *
+     * @return 成功/失败
+     **/
+    @Override
+    public Responses<String> accept(ProjectInformationDTO projectInformationDTO) {
+        ProjectEntity entity = new ProjectEntity();
+        BeanUtils.copyProperties(projectInformationDTO,entity);
         projectMapper.updateById(entity);
         return Responses.success();
     }

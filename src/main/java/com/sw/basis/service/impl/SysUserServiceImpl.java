@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sw.basis.dto.query.SysUserQuery;
 import com.sw.basis.dto.request.SysUserModifyDTO;
+import com.sw.basis.dto.request.UserInformationDTO;
 import com.sw.basis.dto.response.SysUserDTO;
 import com.sw.basis.entity.SysUserEntity;
 import com.sw.basis.mapper.SysUserMapper;
@@ -61,6 +62,22 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     public Responses<String> add(SysUserModifyDTO dto) {
         SysUserEntity sysUserEntity = new SysUserEntity();
         BeanUtils.copyProperties(dto,sysUserEntity);
+        sysUserEntity.preInsert();
+        sysUserMapper.insert(sysUserEntity);
+        return Responses.success();
+    }
+
+
+    /**
+     * 接受信天游的用户信息
+     * @param userInformationDTO 信天游的用户信息
+     *
+     * @return 成功/失败
+     **/
+    @Override
+    public Responses<String> accept(UserInformationDTO userInformationDTO) {
+        SysUserEntity sysUserEntity = new SysUserEntity();
+        BeanUtils.copyProperties(userInformationDTO,sysUserEntity);
         sysUserEntity.preInsert();
         sysUserMapper.insert(sysUserEntity);
         return Responses.success();
