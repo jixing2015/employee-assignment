@@ -13,4 +13,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SysDeptService extends IService<SysDeptEntity> {
 
+    /**
+     * 根据部门编号获取板块信息
+     * @param deptCode 部门编号
+     *
+     * @return 板块信息
+     **/
+    SysDeptEntity getPlageByDeptCode(String deptCode);
 }

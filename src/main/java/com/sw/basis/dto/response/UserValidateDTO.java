@@ -1,22 +1,18 @@
-package com.sw.basis.dto.request;
+package com.sw.basis.dto.response;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.util.Date;
-
 /**
- * <p>
- * 用户表
- * </p>
+ * 用户表校验DTO
  *
  * @author jixing2000
  * @since 2022-07-07
  */
-@ApiModel(value = "用户表 ModifyDTO")
+@ApiModel(value = "用户表校验DTO")
 @Data
-public class SysUserModifyDTO {
+public class UserValidateDTO {
 
     @ApiModelProperty(value = "主键")
     private Integer id;
@@ -66,19 +62,7 @@ public class SysUserModifyDTO {
     @ApiModelProperty(value = "状态;0，在职；1离职")
     private Integer state;
 
-    @ApiModelProperty(value = "创建人")
-    private String createBy;
-
-    @ApiModelProperty(value = "创建时间")
-    private Date createTime;
-
-    @ApiModelProperty(value = "更新人")
-    private String updateBy;
-
-    @ApiModelProperty(value = "更新时间")
-    private Date updateTime;
-
-    @ApiModelProperty(value = "是否删除;0表示未删除，1表示删除")
-    private Integer delFlag;
+    @ApiModelProperty(value = "派工成本")
+    private Integer dispatchCost;
 
 }

@@ -48,9 +48,24 @@ public class SysDeptEntity implements Serializable {
     private String parentCode;
 
     /**
-     * 业务条线
+     * 板块编号
      */
-    private String line;
+    private String plageCode;
+
+    /**
+     * 板块名称
+     */
+    private String plageName;
+
+    /**
+     * 条线编号
+     */
+    private String lineCode;
+
+    /**
+     * 条线名称
+     */
+    private String lineName;
 
     /**
      * 创建人

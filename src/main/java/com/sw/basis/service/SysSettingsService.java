@@ -56,6 +56,6 @@ public interface SysSettingsService extends IService<SysSettingsEntity> {
      *
      * @return 配置详情
      **/
-    Responses<SysSettingsDTO> detail(String plageCode);
+    SysSettingsEntity detail(String plageCode);
 
 }

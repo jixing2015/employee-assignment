@@ -8,7 +8,10 @@
         <result column="dept_code" property="deptCode" />
         <result column="dept_name" property="deptName" />
         <result column="parent_code" property="parentCode" />
-        <result column="line" property="line" />
+        <result column="plage_code" property="plageCode" />
+        <result column="plage_name" property="plageName" />
+        <result column="line_code" property="lineCode" />
+        <result column="line_name" property="lineName" />
         <result column="create_by" property="createBy" />
         <result column="create_time" property="createTime" />
         <result column="update_by" property="updateBy" />

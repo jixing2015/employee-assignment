@@ -1,7 +1,7 @@
 package com.sw.basis.dto;
 
-import com.sw.basis.dto.request.ProjectModifyDTO;
-import com.sw.basis.dto.request.SysUserModifyDTO;
+import com.sw.basis.dto.response.ProjectValidateDTO;
+import com.sw.basis.dto.response.UserValidateDTO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -25,9 +25,9 @@ public class ValidateVO {
     private Date endTime;
 
     @ApiModelProperty(value = "项目列表")
-    private List<ProjectModifyDTO> projectList;
+    private List<ProjectValidateDTO> projectList;
 
     @ApiModelProperty(value = "人员列表")
-    private List<SysUserModifyDTO> userList;
+    private List<UserValidateDTO> userList;
 
 }

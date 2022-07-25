@@ -1,4 +1,4 @@
-package com.sw.basis.dto.request;
+package com.sw.basis.dto.response;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,15 +8,15 @@ import java.util.Date;
 
 /**
  * <p>
- * 项目表 ModifyDTO
+ * 项目表校验DTO
  * </p>
  *
  * @author jixing2000
  * @since 2022-07-07
  */
-@ApiModel(value = "项目表 ModifyDTO")
+@ApiModel(value = "项目表校验DTO")
 @Data
-public class ProjectModifyDTO {
+public class ProjectValidateDTO {
 
     @ApiModelProperty(value = "主键")
     private Integer id;
@@ -24,7 +24,7 @@ public class ProjectModifyDTO {
     @ApiModelProperty(value = "项目编号")
     private String projectCode;
 
-    @ApiModelProperty(value = "项目名称")
+    @ApiModelProperty(value = "主键")
     private String projectName;
 
     @ApiModelProperty(value = "部门编号")
@@ -51,19 +51,7 @@ public class ProjectModifyDTO {
     @ApiModelProperty(value = "负责合伙人编号")
     private String partnerCode;
 
-    @ApiModelProperty(value = "创建人")
-    private String createBy;
-
-    @ApiModelProperty(value = "创建时间")
-    private Date createTime;
-
-    @ApiModelProperty(value = "更新人")
-    private String updateBy;
-
-    @ApiModelProperty(value = "更新时间")
-    private Date updateTime;
-
-    @ApiModelProperty(value = "是否删除;0表示未删除，1表示删除")
-    private Integer delFlag;
+    @ApiModelProperty(value = "预计时间成本")
+    private Integer estimatedTimeCost;
 
 }

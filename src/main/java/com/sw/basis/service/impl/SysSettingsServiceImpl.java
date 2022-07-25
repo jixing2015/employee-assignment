@@ -106,15 +106,15 @@ public class SysSettingsServiceImpl extends ServiceImpl<SysSettingsMapper, SysSe
      * @return 配置详情
      **/
     @Override
-    public Responses<SysSettingsDTO> detail(String plageCode) {
+    public SysSettingsEntity detail(String plageCode) {
         QueryWrapper<SysSettingsEntity> wrapper = new QueryWrapper<>();
         wrapper.lambda().eq(SysSettingsEntity::getPlageCode,plageCode);
         List<SysSettingsEntity> list = settingsMapper.selectList(wrapper);
-        SysSettingsDTO dto = new SysSettingsDTO();
+        SysSettingsEntity sysSettingsEntity = new SysSettingsEntity();
         if(list != null && list().size() > 0){
-            BeanUtils.copyProperties(list.get(0),dto);
+            sysSettingsEntity = list.get(0);
         }
-        return Responses.success(dto);
+        return sysSettingsEntity;
     }
 
 }
