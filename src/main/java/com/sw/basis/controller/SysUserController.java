@@ -1,7 +1,6 @@
 package com.sw.basis.controller;
 
 
-import com.sw.basis.annotation.Log;
 import com.sw.basis.dto.query.SysUserQuery;
 import com.sw.basis.dto.request.SysUserModifyDTO;
 import com.sw.basis.dto.request.UserInformationDTO;
@@ -10,14 +9,13 @@ import com.sw.basis.service.impl.SysUserServiceImpl;
 import com.sw.basis.utils.Responses;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
-import javax.annotation.Resource;
-import java.util.List;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -51,7 +49,7 @@ public class SysUserController {
 
 
     final String ACCEPT = "接受信天游的用户信息";
-    @Log(desc = ACCEPT, type = Log.LOG_TYPE.ADD)
+//    @Log(desc = ACCEPT, type = Log.LOG_TYPE.ADD)
     @ApiOperation(value = ACCEPT)
     @PostMapping("/accept")
     public Responses<String> accept(@RequestBody UserInformationDTO userInformationDTO) {

@@ -1,20 +1,18 @@
 package com.sw.basis.controller;
 
 
-import com.sw.basis.annotation.Log;
 import com.sw.basis.dto.request.DepartmentInformationDTO;
 import com.sw.basis.service.SysDeptService;
 import com.sw.basis.utils.Responses;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
-import javax.annotation.Resource;
-import javax.validation.Valid;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * <p>
@@ -34,7 +32,7 @@ public class SysDeptController {
 
     private final static String ADD = "接受信天游部门信息";
 
-    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
+//    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
     @ApiOperation(value = ADD)
     @PostMapping("/departmentInformation")
     public Responses<String> departmentInformation (@RequestBody @Valid DepartmentInformationDTO departmentInformationDTO) {

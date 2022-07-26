@@ -2,7 +2,6 @@ package com.sw.basis.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.sw.basis.annotation.Log;
 import com.sw.basis.dto.query.personnelDimensionPageDTO;
 import com.sw.basis.dto.query.projectDimensionPageDTO;
 import com.sw.basis.dto.response.DispatchRecordDTO;
@@ -34,7 +33,7 @@ public class DispatchRecordController {
     DispatchRecordService dispatchRecordService;
 
     final static String PAGE_BY_PERSONNEL_DIMENSION = "项目派遣-人员维度-分页列表";
-    @Log(desc = PAGE_BY_PERSONNEL_DIMENSION, type = Log.LOG_TYPE.SELECT)
+//    @Log(desc = PAGE_BY_PERSONNEL_DIMENSION, type = Log.LOG_TYPE.SELECT)
     @ApiOperation(value = PAGE_BY_PERSONNEL_DIMENSION)
     @PostMapping(value = "/pageByPersonnelDimension")
     public Responses<IPage<DispatchRecordDTO>> pageByPersonnelDimension(@RequestBody personnelDimensionPageDTO dto){
@@ -42,7 +41,7 @@ public class DispatchRecordController {
     }
 
     final static String PAGE_BY_PROJECT_DIMENSION = "项目派遣-人员维度-分页列表";
-    @Log(desc = PAGE_BY_PROJECT_DIMENSION, type = Log.LOG_TYPE.SELECT)
+//    @Log(desc = PAGE_BY_PROJECT_DIMENSION, type = Log.LOG_TYPE.SELECT)
     @ApiOperation(value = PAGE_BY_PROJECT_DIMENSION)
     @PostMapping(value = "/pageByProjectDimension")
     public Responses<IPage<DispatchRecordDTO>> pageByProjectDimension(@RequestBody projectDimensionPageDTO dto){
