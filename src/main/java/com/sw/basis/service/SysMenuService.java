@@ -1,7 +1,11 @@
 package com.sw.basis.service;
 
-import com.sw.basis.entity.SysMenuEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.dto.response.SysMenuDTO;
+import com.sw.basis.entity.SysMenuEntity;
+import com.sw.basis.utils.Responses;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SysMenuService extends IService<SysMenuEntity> {
 
+    /**
+     * 根据角色查询菜单树
+     * @param roleCode 角色编号
+     *
+     * @return 菜单树
+     **/
+    Responses<List<SysMenuDTO>> tree(String roleCode);
 }

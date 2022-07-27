@@ -6,9 +6,7 @@ import com.sw.basis.utils.LocalUserUtil;
 import com.sw.basis.utils.SeqUtil;
 import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -20,11 +18,8 @@ import java.util.Date;
  * @since 2022-07-07
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 @TableName("sys_menu")
-public class SysMenuEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class SysMenuEntity {
 
     /**
      * 主键
@@ -48,7 +43,7 @@ public class SysMenuEntity implements Serializable {
     private String url;
 
     /**
-     * 菜单类型;0，列表；1，按钮；2，数据
+     * 菜单类型;0，层级(没有按钮没有权限)；1，列表；2，按钮；
      */
     private Integer menuType;
 
