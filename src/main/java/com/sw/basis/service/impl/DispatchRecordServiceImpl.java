@@ -160,4 +160,21 @@ public class DispatchRecordServiceImpl extends ServiceImpl<DispatchRecordMapper,
     public Responses<String> unDispatch(DispatchDTO dto) {
         return null;
     }
+
+    /**
+     * 跳过无法派遣的员工，派遣其他员工
+     *
+     * @param dto 表单
+     * @return 成功/失败
+     **/
+    @Override
+    public Responses<String> skipAndDispatchOther(DispatchDTO dto) {
+        // 查询可派遣的员工
+        // 派遣 todo
+        DispatchDTO dispatchDTO = new DispatchDTO();
+        this.dispatch(dispatchDTO);
+        return null;
+    }
+
+
 }

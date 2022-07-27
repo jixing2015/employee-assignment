@@ -50,4 +50,13 @@ public interface DispatchRecordService extends IService<DispatchRecordEntity> {
      * @return 成功/失败
      **/
     Responses<String> unDispatch(DispatchDTO dto);
+
+    /**
+     * 跳过无法派遣的员工，派遣其他员工
+     * @param dto 表单
+     *
+     * @return 成功/失败
+     **/
+    Responses<String> skipAndDispatchOther(DispatchDTO dto);
+
 }
