@@ -8,9 +8,12 @@
         <result column="role_type" property="roleType" />
         <result column="role_code" property="roleCode" />
         <result column="role_name" property="roleName" />
+        <result column="state" property="state" />
         <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
         <result column="create_time" property="createTime" />
         <result column="update_by" property="updateBy" />
+        <result column="update_name" property="updateName" />
         <result column="update_time" property="updateTime" />
         <result column="del_flag" property="delFlag" />
     </resultMap>

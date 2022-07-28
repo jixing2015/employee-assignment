@@ -17,4 +17,10 @@ public interface StateConstant {
 
     /** 是 */
     int YES = 1;
+
+    /** 已启用 */
+    int ENABLE = 0;
+
+    /** 已禁用 */
+    int DISABLE = 1;
 }

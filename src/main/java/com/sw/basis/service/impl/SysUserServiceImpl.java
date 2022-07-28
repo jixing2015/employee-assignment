@@ -1,6 +1,8 @@
 package com.sw.basis.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sw.basis.dto.query.SysUserQuery;
 import com.sw.basis.dto.request.SysUserModifyDTO;
@@ -33,6 +35,26 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     SysUserMapper sysUserMapper;
 
     /**
+     * 用户_分页列表
+     *
+     * @param query 查询条件
+     * @return java.util.List<com.sw.basis.dto.response.SysUserDTO>
+     **/
+    @Override
+    public IPage<SysUserDTO> page(SysUserQuery query) {
+        QueryWrapper<SysUserEntity> wrapper = new QueryWrapper<>();
+        wrapper.lambda().like(StringUtils.isNotEmpty(query.getName()),SysUserEntity::getName,query.getName());
+        wrapper.lambda().orderByDesc(SysUserEntity::getId);
+        Page<SysUserEntity> page = new Page<>(query.getPageNum(),query.getPageSize());
+        IPage<SysUserEntity> result = sysUserMapper.selectPage(page,wrapper);
+        return result.convert(sysUserEntity -> {
+            SysUserDTO sysUserDTO = new SysUserDTO();
+            BeanUtils.copyProperties(sysUserEntity,sysUserDTO);
+            return sysUserDTO;
+        });
+    }
+
+    /**
      * 用户列表
      *
      * @param query 查询条件
@@ -44,6 +66,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         wrapper.lambda().eq(StringUtils.isNotEmpty(query.getCode()),SysUserEntity::getCode,query.getCode());
         wrapper.lambda().eq(StringUtils.isNotEmpty(query.getName()),SysUserEntity::getName,query.getName());
         wrapper.lambda().eq(query.getState() != null,SysUserEntity::getState,query.getState());
+        wrapper.lambda().orderByDesc(SysUserEntity::getId);
         List<SysUserEntity> list = sysUserMapper.selectList(wrapper);
         return list.stream().map(sysUserEntity -> {
             SysUserDTO sysUserDTO = new SysUserDTO();

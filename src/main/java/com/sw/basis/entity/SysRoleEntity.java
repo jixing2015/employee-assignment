@@ -6,25 +6,20 @@ import com.sw.basis.utils.LocalUserUtil;
 import com.sw.basis.utils.SeqUtil;
 import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * <p>
- * 角色表
+ * 角色表（岗位）
  * </p>
  *
  * @author jixing2000
  * @since 2022-07-07
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 @TableName("sys_role")
-public class SysRoleEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class SysRoleEntity {
 
     /**
      * 主键
@@ -53,6 +48,11 @@ public class SysRoleEntity implements Serializable {
     private String createBy;
 
     /**
+     * 创建人名称
+     */
+    private String createName;
+
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -63,9 +63,19 @@ public class SysRoleEntity implements Serializable {
     private String updateBy;
 
     /**
+     * 更新人名称
+     */
+    private String updateName;
+
+    /**
      * 更新时间
      */
     private Date updateTime;
+
+    /**
+     * 状态;0已启用,1已停用
+     */
+    private Integer state;
 
     /**
      * 是否删除;0表示未删除，1表示删除
@@ -81,6 +91,7 @@ public class SysRoleEntity implements Serializable {
             this.setDelFlag(CommonInfo.DelFlag.UN_DEL);
             this.setCreateTime(new Date());
             this.setCreateBy(LocalUserUtil.getCurrentUser() != null ? LocalUserUtil.getCurrentUser().getCode() : null);
+            this.setCreateName(LocalUserUtil.getCurrentUser() != null ? LocalUserUtil.getCurrentUser().getName() : null);
         } catch (Exception e) {
             e.printStackTrace();
         }

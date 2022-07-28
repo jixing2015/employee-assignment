@@ -1,11 +1,12 @@
 package com.sw.basis.controller;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.sw.basis.dto.query.SysUserQuery;
 import com.sw.basis.dto.request.SysUserModifyDTO;
 import com.sw.basis.dto.request.UserInformationDTO;
 import com.sw.basis.dto.response.SysUserDTO;
-import com.sw.basis.service.impl.SysUserServiceImpl;
+import com.sw.basis.service.SysUserService;
 import com.sw.basis.utils.Responses;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,7 +32,15 @@ import java.util.List;
 public class SysUserController {
 
     @Resource
-    SysUserServiceImpl sysUserService;
+    SysUserService sysUserService;
+
+    final String PAGE = "用户_分页列表";
+//    @Log(desc = ACCEPT, type = Log.LOG_TYPE.SELECT)
+    @ApiOperation(value = PAGE)
+    @PostMapping("/page")
+    public Responses<IPage<SysUserDTO>> page(@RequestBody SysUserQuery query) {
+        return Responses.success(sysUserService.page(query));
+    }
 
     final String GET_USER_LIST = "用户列表";
     @ApiOperation(value = GET_USER_LIST)

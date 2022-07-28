@@ -1,5 +1,6 @@
 package com.sw.basis.dto.query;
 
+import com.sw.basis.utils.vo.Pageable;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -8,7 +9,7 @@ import lombok.Data;
  * @author jixing2000
  **/
 @Data
-public class SysUserQuery{
+public class SysUserQuery extends Pageable {
 
 	@ApiModelProperty(value = "用户编号")
 	private String code;
