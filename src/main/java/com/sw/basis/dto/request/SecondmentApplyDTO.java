@@ -17,7 +17,7 @@ import java.util.List;
  * @create 2022/7/11
  */
 
-@ApiModel("借调申请入参")
+@ApiModel(value = "借调申请入参")
 @Data
 public class SecondmentApplyDTO {
 
