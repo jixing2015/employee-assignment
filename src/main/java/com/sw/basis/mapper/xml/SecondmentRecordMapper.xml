@@ -19,4 +19,58 @@
         <result column="del_flag" property="delFlag" />
     </resultMap>
 
+    <resultMap id="QuerySecondmentRecordEntityMap" type="com.sw.basis.entity.QuerySecondmentRecordEntity">
+        <result column="id" property="id" />
+        <result column="createTime" property="createTime" />
+        <result column="name" property="name" />
+        <result column="code" property="code" />
+        <result column="levelName" property="levelName" />
+        <result column="levelCode" property="levelCode" />
+        <result column="deptName" property="deptName" />
+        <result column="deptCode" property="deptCode" />
+        <result column="projectName" property="projectName" />
+        <result column="projectCode" property="projectCode" />
+        <result column="coordinator" property="coordinator" />
+        <result column="eName" property="eName" />
+        <result column="eCode" property="eCode" />
+        <result column="eDeptName" property="eDeptName" />
+        <result column="eDeptCode" property="eDeptCode" />
+        <result column="eLevelName" property="eLevelName" />
+        <result column="eLevelCode" property="eLevelCode" />
+        <result column="startTime" property="startTime" />
+        <result column="endTime" property="endTime" />
+        <result column="settlement" property="settlement" />
+        <result column="hoursPerDay" property="hoursPerDay" />
+    </resultMap>
+
+    <sql id="QuerySecondmentRecordEntitySql">
+        id,
+        createTime,
+        `name`,
+        `code`,
+        levelName,
+        levelCode,
+        deptName,
+        deptCode,
+        projectName,
+        projectCode,
+        coordinator,
+        eName,
+        eCode,
+        eDeptName,
+        eDeptCode,
+        eLevelName,
+        eLevelCode,
+        startTime,
+        endTime,
+        settlement,
+        hoursPerDay
+    </sql>
+
+    <select id="selectSecondmentRecord" resultMap="QuerySecondmentRecordEntityMap">
+        select <include refid="QuerySecondmentRecordEntitySql"/> from query_secondment_record
+    </select>
+
+
+
 </mapper>
