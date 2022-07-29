@@ -45,11 +45,38 @@ public class ProjectDTO {
     @ApiModelProperty(value = "风险分类")
     private String riskCategory;
 
-    @ApiModelProperty(value = "负责经理编号")
-    private String managerCode;
+    @ApiModelProperty(value = "板块")
+    private String pmprojectBusinesstype;
 
-    @ApiModelProperty(value = "负责合伙人编号")
-    private String partnerCode;
+    @ApiModelProperty(value = "项目类型")
+    private String pmprojectPrjtmpid;
+
+    @ApiModelProperty(value = "委托人名称")
+    private String pmprojectCustomer;
+
+    @ApiModelProperty(value = "被审计单位名称")
+    private String pmprojectExaminate;
+
+    @ApiModelProperty(value = "预计时间成本（万元）")
+    private String pmbusutakeTimecost;
+
+    @ApiModelProperty(value = "项目状态")
+    private String pmprojectStatus;
+
+    @ApiModelProperty(value = "负责经理")
+    private String pmprojectManager;
+
+    @ApiModelProperty(value = "负责经理2")
+    private String pmprojectManager2;
+
+    @ApiModelProperty(value = "负责经理2状态")
+    private String pmprojectManager2status;
+
+    @ApiModelProperty(value = "现场负责人")
+    private String pmprojectCedperson;
+
+    @ApiModelProperty(value = "负责合伙人")
+    private String pmprojectPartner;
 
     @ApiModelProperty(value = "创建人")
     private String createBy;

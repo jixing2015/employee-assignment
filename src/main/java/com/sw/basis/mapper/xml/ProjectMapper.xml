@@ -13,8 +13,17 @@
         <result column="auditee" property="auditee" />
         <result column="approval_date" property="approvalDate" />
         <result column="risk_category" property="riskCategory" />
-        <result column="manager_code" property="managerCode" />
-        <result column="partner_code" property="partnerCode" />
+        <result column="pmproject_businesstype" property="pmprojectBusinesstype" />
+        <result column="pmproject_prjtmpid" property="pmprojectPrjtmpid" />
+        <result column="pmproject_customer" property="pmprojectCustomer" />
+        <result column="pmproject_examinate" property="pmprojectExaminate" />
+        <result column="pmbusutake_timecost" property="pmbusutakeTimecost" />
+        <result column="pmproject_status" property="pmprojectStatus" />
+        <result column="pmproject_manager" property="pmprojectManager" />
+        <result column="pmproject_manager2" property="pmprojectManager2" />
+        <result column="pmproject_manager2status" property="pmprojectManager2status" />
+        <result column="pmproject_cedperson" property="pmprojectCedperson" />
+        <result column="pmproject_partner" property="pmprojectPartner" />
         <result column="create_by" property="createBy" />
         <result column="create_time" property="createTime" />
         <result column="update_by" property="updateBy" />

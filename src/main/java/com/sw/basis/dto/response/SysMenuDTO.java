@@ -40,7 +40,7 @@ public class SysMenuDTO {
     private String description;
 
     @ApiModelProperty(value = "数据权限")
-    private String dataRole;
+    private Integer dataRole;
 
     @ApiModelProperty(value = "子集")
     private List<SysMenuDTO> children;

@@ -68,14 +68,59 @@ public class ProjectEntity {
     private String riskCategory;
 
     /**
-     * 负责经理编号
+     * 板块
      */
-    private String managerCode;
+    private String pmprojectBusinesstype;
 
     /**
-     * 负责合伙人编号
+     * 项目类型
      */
-    private String partnerCode;
+    private String pmprojectPrjtmpid;
+
+    /**
+     * 委托人名称
+     */
+    private String pmprojectCustomer;
+
+    /**
+     * 被审计单位名称
+     */
+    private String pmprojectExaminate;
+
+    /**
+     * 预计时间成本（万元）
+     */
+    private String pmbusutakeTimecost;
+
+    /**
+     * 项目状态
+     */
+    private String pmprojectStatus;
+
+    /**
+     * 负责经理
+     */
+    private String pmprojectManager;
+
+    /**
+     * 负责经理2
+     */
+    private String pmprojectManager2;
+
+    /**
+     * 负责经理2状态
+     */
+    private String pmprojectManager2status;
+
+    /**
+     * 现场负责人
+     */
+    private String pmprojectCedperson;
+
+    /**
+     * 负责合伙人
+     */
+    private String pmprojectPartner;
 
     /**
      * 创建人

@@ -108,6 +108,11 @@ public class SysUserEntity implements Serializable {
     private Integer state;
 
     /**
+     * 人才基地
+     */
+    private String hrempTalentbase;
+
+    /**
      * 创建人
      */
     private String createBy;

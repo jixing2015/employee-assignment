@@ -70,6 +70,9 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
         sysRoleEntity.setState(StateConstant.ENABLE);
         sysRoleEntity.preInsert();
         sysRoleMapper.insert(sysRoleEntity);
+        //岗位与权限关系增加
+
+        //岗位与人员关系增加
         return Responses.success();
     }
 

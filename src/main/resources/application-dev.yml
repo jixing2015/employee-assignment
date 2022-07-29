@@ -34,3 +34,4 @@ mybatis-plus:
 #    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl #不打印SQL
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #控制台打印LOG，带SQL
     map-underscore-to-camel-case: true #开启自动下划线格式转驼峰格式
+    auto-mapping-behavior: full

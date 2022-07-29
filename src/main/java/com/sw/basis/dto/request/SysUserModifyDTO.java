@@ -66,6 +66,9 @@ public class SysUserModifyDTO {
     @ApiModelProperty(value = "状态;0，在职；1离职")
     private Integer state;
 
+    @ApiModelProperty(value = "人才基地")
+    private String hrempTalentbase;
+
     @ApiModelProperty(value = "创建人")
     private String createBy;
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sw.basis.mapper.ProjectMembersMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sw.basis.entity.ProjectMembersEntity">
+        <id column="id" property="id" />
+        <result column="pmres_resid" property="pmresResid" />
+        <result column="pmres_rescode" property="pmresRescode" />
+        <result column="pmres_name" property="pmresName" />
+        <result column="pmres_entity" property="pmresEntity" />
+        <result column="asorg_orgcode" property="asorgOrgcode" />
+        <result column="asorg_orgname" property="asorgOrgname" />
+        <result column="pmprjres_fromdate" property="pmprjresFromdate" />
+        <result column="pmprjres_todate" property="pmprjresTodate" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+</mapper>
