@@ -72,5 +72,49 @@
     </select>
 
 
+    <select id="loanRecordConditionQuery" resultType="java.util.Map" parameterType="com.sw.basis.dto.request.ConditionsQueryDTO">
+        SELECT
+            pro.project_name projectName,
+            rec.address address,
+            de.dept_code sendDeptCode,
+            de.dept_name sendDeptName,
+            de.plage_name plageName,
+            de.plage_code plageCode,
+            rec.review_status reviewStatus,
+            de.dept_code deptCode,
+            de.dept_name deptName,
+            rec.create_by createBy,
+            rec.creator_code creatorCode
+        FROM
+            secondment_record rec LEFT JOIN project pro ON rec.project_code = pro.project_code
+                                  LEFT JOIN sys_dept de ON rec.dept_code = de.dept_code
+                                  LEFT JOIN secondment_peoples peo ON rec.secondment_code = peo.secondment_id
+        <where>
+            <if test="conditionsQueryDTO.deptName != '' and conditionsQueryDTO.deptName != ' ' and conditionsQueryDTO.deptName != null ">
+                and de.dept_name LIKE  "%"  #{conditionsQueryDTO.deptName} "%"
+            </if>
+            <if test="conditionsQueryDTO.createBy != '' and conditionsQueryDTO.createBy != ' ' and conditionsQueryDTO.createBy != null ">
+                and rec.create_by LIKE  "%" #{conditionsQueryDTO.createBy} "%"
+            </if>
+            <if test="conditionsQueryDTO.projectName != '' and conditionsQueryDTO.projectName != ' ' and conditionsQueryDTO.projectName != null ">
+                and pro.project_name LIKE "%"  #{conditionsQueryDTO.projectName} "%"
+            </if>
+            <if test="conditionsQueryDTO.plageName != '' and conditionsQueryDTO.plageName != ' ' and conditionsQueryDTO.plageName != null ">
+                and de.plage_name LIKE "%" #{conditionsQueryDTO.plageName} "%"
+            </if>
+            <if test="conditionsQueryDTO.sendDeptName != '' and conditionsQueryDTO.sendDeptName != ' ' and conditionsQueryDTO.sendDeptName != null ">
+                and de.dept_name LIKE "%"  #{conditionsQueryDTO.sendDeptName} "%"
+            </if>
+            <if test="conditionsQueryDTO.sendPlageName != '' and conditionsQueryDTO.sendPlageName != ' ' and conditionsQueryDTO.sendPlageName != null ">
+                and de.plage_name LIKE "%" #{conditionsQueryDTO.sendPlageName} "%"
+            </if>
+            <if test="conditionsQueryDTO.updateTime != '' and conditionsQueryDTO.updateTime != ' ' and conditionsQueryDTO.updateTime != null ">
+                and rec.dept_name = #{conditionsQueryDTO.updateTime}
+            </if>
+            and rec.del_flag = '0'
+        </where>
+    </select>
+
+
 
 </mapper>

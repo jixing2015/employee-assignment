@@ -73,6 +73,11 @@ public class SecondmentRecordEntity implements Serializable {
     private String createBy;
 
     /**
+    * 创建人编号
+    */
+    private String creatorCode;
+
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -91,6 +96,16 @@ public class SecondmentRecordEntity implements Serializable {
      * 是否删除;0表示未删除，1表示删除
      */
     private Integer delFlag;
+
+    /**
+     * 审核状态:0未提交，1待审核，2已派遣，3已拒绝
+     */
+    private Integer reviewStatus;
+
+    /**
+     * 其它要求
+     */
+    private Integer otherRequirements;
 
     /**
      * 新增前初始化

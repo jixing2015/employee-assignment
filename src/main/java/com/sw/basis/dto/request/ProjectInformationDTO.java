@@ -1,5 +1,6 @@
 package com.sw.basis.dto.request;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -7,6 +8,7 @@ import lombok.Data;
  * @author DongLinmo
  * @create 2022/7/25
  */
+@ApiModel(value = "项目信息")
 @Data
 public class ProjectInformationDTO {
 

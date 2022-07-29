@@ -1,6 +1,7 @@
 package com.sw.basis.dto.request;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -11,7 +12,7 @@ import java.io.Serializable;
  * @create 2022/7/25
  */
 @Data
-@Api(value = "信天游信息")
+@ApiModel(value = "信天游信息")
 public class FreeBirdInformationDTO{
 
     @ApiModelProperty(value = "姓名")
