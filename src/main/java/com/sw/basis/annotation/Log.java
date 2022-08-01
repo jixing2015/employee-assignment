@@ -25,7 +25,9 @@ public @interface Log {
 		/** 查询 **/
 		SELECT,
 		/** 用户 **/
-		ATHOR
+		ATHOR,
+		/** 用户 **/
+		ADD_OR_UPDATE
 	}
 
 	/**

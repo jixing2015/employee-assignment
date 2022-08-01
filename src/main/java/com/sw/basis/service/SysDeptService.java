@@ -1,10 +1,12 @@
 package com.sw.basis.service;
 
-import com.sw.basis.dto.request.DepartmentInformationDTO;
-import com.sw.basis.dto.request.FreeBirdInformationDTO;
-import com.sw.basis.entity.SysDeptEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.dto.api.OrganizationDTO;
+import com.sw.basis.dto.request.DepartmentInformationDTO;
+import com.sw.basis.entity.SysDeptEntity;
 import com.sw.basis.utils.Responses;
+
+import java.util.List;
 
 /**
  * <p>
@@ -31,4 +33,10 @@ public interface SysDeptService extends IService<SysDeptEntity> {
      **/
     Responses<String> insert(DepartmentInformationDTO departmentInformationDTO);
 
+    /**
+     * 同步组织机构信息
+     * @param dtoList 组织机构信息集合
+     *
+     **/
+    void pushOrganization(List<OrganizationDTO> dtoList);
 }

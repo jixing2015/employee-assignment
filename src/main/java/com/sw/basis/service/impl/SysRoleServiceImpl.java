@@ -252,7 +252,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
         SysRoleDTO sysRoleDTO = new SysRoleDTO();
         QueryWrapper<SysRoleEntity> sysRoleWrapper = new QueryWrapper<>();
         sysRoleWrapper.lambda().eq(SysRoleEntity::getId,id);
-        sysRoleWrapper.lambda().eq(SysRoleEntity::getDelFlag,StateConstant.NOT_DEL);
+        sysRoleWrapper.lambda().eq(SysRoleEntity::getDelFlag,StateConstant.UN_DEL);
         List<SysRoleEntity> sysRoleEntityList = sysRoleMapper.selectList(sysRoleWrapper);
         if(sysRoleEntityList != null && sysRoleEntityList.size() > 0){
             BeanUtils.copyProperties(sysRoleEntityList.get(0),sysRoleDTO);

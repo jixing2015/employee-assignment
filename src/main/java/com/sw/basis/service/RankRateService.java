@@ -1,7 +1,10 @@
 package com.sw.basis.service;
 
-import com.sw.basis.entity.RankRateEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.dto.api.RankRateDTO;
+import com.sw.basis.entity.RankRateEntity;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface RankRateService extends IService<RankRateEntity> {
 
+    /**
+     * 同步职级费率
+     * @param dtoList 职级费率集合
+     *
+     **/
+    void pushRankRate(List<RankRateDTO> dtoList);
 }

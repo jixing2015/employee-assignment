@@ -7,6 +7,7 @@ import com.sw.basis.utils.SeqUtil;
 import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -65,17 +66,17 @@ public class ProjectEntity {
     /**
      * 风险分类
      */
-    private String riskCategory;
+    private Integer riskCategory;
 
     /**
      * 板块
      */
-    private String pmprojectBusinesstype;
+    private Integer pmprojectBusinesstype;
 
     /**
      * 项目类型
      */
-    private String pmprojectPrjtmpid;
+    private Integer pmprojectPrjtmpid;
 
     /**
      * 委托人名称
@@ -90,12 +91,12 @@ public class ProjectEntity {
     /**
      * 预计时间成本（万元）
      */
-    private String pmbusutakeTimecost;
+    private BigDecimal pmbusutakeTimecost;
 
     /**
      * 项目状态
      */
-    private String pmprojectStatus;
+    private Integer pmprojectStatus;
 
     /**
      * 负责经理

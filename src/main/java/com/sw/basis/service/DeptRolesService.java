@@ -1,7 +1,10 @@
 package com.sw.basis.service;
 
-import com.sw.basis.entity.DeptRolesEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.dto.api.DeptRolesDTO;
+import com.sw.basis.entity.DeptRolesEntity;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface DeptRolesService extends IService<DeptRolesEntity> {
 
+    /**
+     * 同步部门角色及人员
+     * @param dtoList 部门角色及人员集合
+     *
+     **/
+    void pushDeptRoles(List<DeptRolesDTO> dtoList);
 }

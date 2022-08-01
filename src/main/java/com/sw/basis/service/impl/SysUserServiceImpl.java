@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sw.basis.dto.api.UserDTO;
 import com.sw.basis.dto.query.SysUserQuery;
 import com.sw.basis.dto.request.SysUserModifyDTO;
 import com.sw.basis.dto.request.UserInformationDTO;
@@ -17,6 +18,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -104,5 +106,29 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         sysUserEntity.preInsert();
         sysUserMapper.insert(sysUserEntity);
         return Responses.success();
+    }
+
+    /**
+     * 同步员工档案
+     *
+     * @param dtoList 员工档案集合
+     **/
+    @Override
+    public void pushUser(List<UserDTO> dtoList) {
+        List<SysUserEntity> list = new ArrayList<>();
+        for(UserDTO dto : dtoList){
+            SysUserEntity entity = new SysUserEntity();
+            entity.preInsert();
+            entity.setCode(dto.getHrempCode());
+            entity.setName(dto.getHrempName());
+            entity.setDeptCode(dto.getAsorgOrgid());
+            entity.setDeptName(dto.getAsorgOrgname());
+            entity.setLevelCode(dto.getHrjobJob());
+            entity.setLevelName(dto.getHrjobJobname());
+            entity.setState(dto.getHrempStatus());
+            entity.setHrempTalentbase(dto.getHrempTalentbase());
+            list.add(entity);
+        }
+        this.saveOrUpdateBatch(list);
     }
 }

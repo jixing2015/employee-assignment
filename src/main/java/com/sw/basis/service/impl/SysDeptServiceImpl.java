@@ -1,21 +1,18 @@
 package com.sw.basis.service.impl;
 
-import com.sw.basis.dto.request.DepartmentInformationDTO;
-import com.sw.basis.dto.request.FreeBirdInformationDTO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sw.basis.dto.api.OrganizationDTO;
+import com.sw.basis.dto.request.DepartmentInformationDTO;
 import com.sw.basis.entity.SysDeptEntity;
 import com.sw.basis.mapper.SysDeptMapper;
 import com.sw.basis.service.SysDeptService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sw.basis.utils.Responses;
-
-import javax.annotation.Resource;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,8 +62,29 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity
         return Responses.success();
     }
 
-
-
+    /**
+     * 同步组织机构信息
+     *
+     * @param dtoList 组织机构信息集合
+     **/
+    @Override
+    public void pushOrganization(List<OrganizationDTO> dtoList) {
+        List<SysDeptEntity> list = new ArrayList<>();
+        for(OrganizationDTO dto : dtoList){
+            SysDeptEntity entity = new SysDeptEntity();
+            entity.preInsert();
+            entity.setDeptCode(dto.getAsorgOrgid());
+            entity.setDeptName(dto.getAsorgOrgname());
+            entity.setPlageCode(dto.getAsorgBusinessline());
+            entity.setPlageName(dto.getAsorgBusinesslineName());
+            entity.setAsorgAreaCode(dto.getAsorgArea());
+            entity.setAsorgAreaName(dto.getAsorgAreaName());
+            entity.setLineCode(dto.getAsorgBusinessline());
+            entity.setLineName(dto.getAsorgBusinesslineName());
+            list.add(entity);
+        }
+        this.saveOrUpdateBatch(list);
+    }
 
 
 }

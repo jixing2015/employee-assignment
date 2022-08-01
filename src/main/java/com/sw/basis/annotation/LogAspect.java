@@ -47,7 +47,8 @@ public class LogAspect {
 
 	@After("pointcut()")
 	public void insertLogSuccess(JoinPoint jp) {
-		addLog(jp, getDesc(jp));
+		//todo 暂时不新增日志
+//		addLog(jp, getDesc(jp));
 	}
 
 	private void addLog(JoinPoint jp, String actionName) {

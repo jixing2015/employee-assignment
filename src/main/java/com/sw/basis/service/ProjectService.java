@@ -1,10 +1,13 @@
 package com.sw.basis.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.dto.api.ProjectDTO;
 import com.sw.basis.dto.request.ProjectInformationDTO;
 import com.sw.basis.dto.request.ProjectModifyDTO;
 import com.sw.basis.entity.ProjectEntity;
 import com.sw.basis.utils.Responses;
+
+import java.util.List;
 
 /**
  * <p>
@@ -39,4 +42,11 @@ public interface ProjectService extends IService<ProjectEntity> {
      * @return 成功/失败
      **/
     Responses<String> accept(ProjectInformationDTO projectInformationDTO);
+
+    /**
+     * 同步项目信息
+     * @param dtoList 项目信息集合
+     *
+     **/
+    void pushProject(List<ProjectDTO> dtoList);
 }

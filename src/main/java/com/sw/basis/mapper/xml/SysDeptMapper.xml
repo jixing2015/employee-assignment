@@ -10,6 +10,8 @@
         <result column="parent_code" property="parentCode" />
         <result column="plage_code" property="plageCode" />
         <result column="plage_name" property="plageName" />
+        <result column="asorg_area_code" property="asorgAreaCode" />
+        <result column="asorg_area_name" property="asorgAreaName" />
         <result column="line_code" property="lineCode" />
         <result column="line_name" property="lineName" />
         <result column="create_by" property="createBy" />

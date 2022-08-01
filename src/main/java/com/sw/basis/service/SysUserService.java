@@ -2,6 +2,7 @@ package com.sw.basis.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.dto.api.UserDTO;
 import com.sw.basis.dto.query.SysUserQuery;
 import com.sw.basis.dto.request.SysUserModifyDTO;
 import com.sw.basis.dto.request.UserInformationDTO;
@@ -52,4 +53,11 @@ public interface SysUserService extends IService<SysUserEntity> {
      * @return 成功/失败
      **/
     Responses<String> accept(UserInformationDTO userInformationDTO);
+
+    /**
+     * 同步员工档案
+     * @param dtoList 员工档案集合
+     *
+     **/
+    void pushUser(List<UserDTO> dtoList);
 }

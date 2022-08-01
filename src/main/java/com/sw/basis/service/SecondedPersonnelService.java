@@ -1,7 +1,10 @@
 package com.sw.basis.service;
 
-import com.sw.basis.entity.SecondedPersonnelEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.dto.api.SecondedPersonnelDTO;
+import com.sw.basis.entity.SecondedPersonnelEntity;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SecondedPersonnelService extends IService<SecondedPersonnelEntity> {
 
+    /**
+     * 同步人员借调批量设置
+     * @param dtoList 人员借调批量设置集合
+     *
+     **/
+    void pushSecondedPersonnel(List<SecondedPersonnelDTO>dtoList);
 }

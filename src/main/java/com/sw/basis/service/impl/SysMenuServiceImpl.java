@@ -45,7 +45,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
     @Override
     public Responses<List<SysMenuDTO>> tree(String roleCode) {
         QueryWrapper<SysMenuEntity> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(SysMenuEntity::getDelFlag,StateConstant.NOT_DEL);
+        wrapper.lambda().eq(SysMenuEntity::getDelFlag,StateConstant.UN_DEL);
         wrapper.lambda().orderByAsc(SysMenuEntity::getParentCode);
         List<SysMenuEntity> list = sysMenuMapper.selectList(wrapper);
 
@@ -100,7 +100,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
     @Override
     public List<SysMenuDTO> treeDetail(String roleCode) {
         QueryWrapper<SysMenuEntity> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(SysMenuEntity::getDelFlag,StateConstant.NOT_DEL);
+        wrapper.lambda().eq(SysMenuEntity::getDelFlag,StateConstant.UN_DEL);
         wrapper.lambda().orderByAsc(SysMenuEntity::getParentCode);
         List<SysMenuEntity> list = sysMenuMapper.selectList(wrapper);
         List<SysMenuDTO> tempMenuDTOList = list.stream().map(sysMenuEntity -> {
@@ -110,7 +110,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
         }).collect(Collectors.toList());
         //查询岗位菜单
         QueryWrapper<SysRoleMenuEntity> roleMenuWrapper = new QueryWrapper<>();
-        roleMenuWrapper.lambda().eq(SysRoleMenuEntity::getDelFlag, StateConstant.NOT_DEL);
+        roleMenuWrapper.lambda().eq(SysRoleMenuEntity::getDelFlag, StateConstant.UN_DEL);
         roleMenuWrapper.lambda().eq(SysRoleMenuEntity::getRoleCode, roleCode);
         List<SysRoleMenuEntity> sysRoleMenuEntityList = sysRoleMenuMapper.selectList(roleMenuWrapper);
         if(tempMenuDTOList != null && tempMenuDTOList.size() > 0 && sysRoleMenuEntityList != null && sysRoleMenuEntityList.size() > 0){

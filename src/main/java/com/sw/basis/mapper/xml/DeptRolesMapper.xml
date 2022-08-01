@@ -5,6 +5,7 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.sw.basis.entity.DeptRolesEntity">
         <id column="id" property="id" />
+        <result column="asorgrole" property="asorgrole" />
         <result column="asorgrole_name" property="asorgroleName" />
         <result column="asorgroleemp_empid" property="asorgroleempEmpid" />
         <result column="create_by" property="createBy" />

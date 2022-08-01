@@ -30,6 +30,10 @@ public class SeqUtil {
 		String SYS_SETTINGS = "sys_settings";
 		String SYS_USER = "sys_user";
 		String SYS_USER_ROLE = "sys_user_role";
+		String DEPT_ROLES = "dept_roles";
+		String BUSINESS_LINE = "business_line";
+		String RANK_RATE = "rank_rate";
+		String SECONDED_PERSONNEL = "seconded_personnel";
 
 
 	}

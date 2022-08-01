@@ -1,6 +1,9 @@
 package com.sw.basis.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.sw.basis.utils.LocalUserUtil;
+import com.sw.basis.utils.SeqUtil;
+import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -62,4 +65,17 @@ public class RankRateEntity {
      **/
     private Integer delFlag;
 
+    /**
+     * 新增前初始化
+     **/
+    public void preInsert() {
+        try {
+            this.setId(SeqUtil.nextValue(SeqUtil.ServiceSeqName.RANK_RATE));
+            this.setDelFlag(CommonInfo.DelFlag.UN_DEL);
+            this.setCreateTime(new Date());
+            this.setCreateBy(LocalUserUtil.getCurrentUser() != null ? LocalUserUtil.getCurrentUser().getCode() : null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

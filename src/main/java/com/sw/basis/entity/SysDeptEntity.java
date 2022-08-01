@@ -58,6 +58,16 @@ public class SysDeptEntity implements Serializable {
     private String plageName;
 
     /**
+     * 区域编号
+     */
+    private String asorgAreaCode;
+
+    /**
+     * 区域名称
+     */
+    private String asorgAreaName;
+
+    /**
      * 条线编号
      */
     private String lineCode;

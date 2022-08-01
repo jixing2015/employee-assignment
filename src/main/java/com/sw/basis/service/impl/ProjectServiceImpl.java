@@ -1,6 +1,7 @@
 package com.sw.basis.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sw.basis.dto.api.ProjectDTO;
 import com.sw.basis.dto.request.ProjectInformationDTO;
 import com.sw.basis.dto.request.ProjectModifyDTO;
 import com.sw.basis.entity.ProjectEntity;
@@ -11,6 +12,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -68,6 +71,38 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
         BeanUtils.copyProperties(projectInformationDTO,entity);
         projectMapper.updateById(entity);
         return Responses.success();
+    }
+
+    /**
+     * 同步项目信息
+     *
+     * @param dtoList 项目信息集合
+     **/
+    @Override
+    public void pushProject(List<ProjectDTO> dtoList) {
+        List<ProjectEntity> list = new ArrayList<>();
+        for(ProjectDTO dto : dtoList){
+            ProjectEntity entity = new ProjectEntity();
+            entity.preInsert();
+            entity.setProjectCode(dto.getPmprojectCode());
+            entity.setProjectName(dto.getPmprojectName());
+            entity.setDeptCode(dto.getPmprojectEntity());
+            entity.setBusinessType(dto.getPmprojectServicetype());
+            entity.setApprovalDate(dto.getApprovalDate());
+            entity.setPmprojectBusinesstype(dto.getPmprojectBusinesstype());
+            entity.setPmprojectPrjtmpid(dto.getPmprojectPrjtmpid());
+            entity.setPmprojectCustomer(dto.getPmprojectCustomer());
+            entity.setPmprojectExaminate(dto.getPmprojectExaminate());
+            entity.setPmbusutakeTimecost(dto.getPmbusutakeTimecost());
+            entity.setPmprojectStatus(dto.getPmprojectStatus());
+            entity.setPmprojectManager(dto.getPmprojectManager());
+            entity.setPmprojectManager2(dto.getPmprojectManager2());
+            entity.setPmprojectManager2status(dto.getPmprojectManager2status());
+            entity.setPmprojectCedperson(dto.getPmprojectCedperson());
+            entity.setPmprojectPartner(dto.getPmprojectPartner());
+            list.add(entity);
+        }
+        this.saveOrUpdateBatch(list);
     }
 
 }

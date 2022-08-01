@@ -10,7 +10,7 @@ public interface StateConstant {
     int DEL = 1;
 
     /** 未删除 */
-    int NOT_DEL = 0;
+    int UN_DEL = 0;
 
     /** 否 */
     int NO = 0;
