@@ -43,6 +43,11 @@ public class SysRoleMenuEntity implements Serializable {
     private String menuCode;
 
     /**
+     * 数据权限
+     */
+    private Integer dataRole;
+
+    /**
      * 创建人
      */
     private String createBy;

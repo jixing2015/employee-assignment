@@ -43,6 +43,11 @@ public class SysUserRoleEntity implements Serializable {
     private String roleCode;
 
     /**
+     * 类型；0，用户；1，职级；2,岗位
+     */
+    private Integer types;
+
+    /**
      * 创建人
      */
     private String createBy;

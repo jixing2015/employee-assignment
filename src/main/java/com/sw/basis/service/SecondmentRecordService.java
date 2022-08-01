@@ -21,7 +21,7 @@ import java.util.List;
 public interface SecondmentRecordService extends IService<SecondmentRecordEntity> {
 
     /**
-     * 查询
+     * 借调历史记录
      * @param
      *
      * @return List<SecondmentRecordDTO> 查询借调记录的结果集
@@ -29,7 +29,7 @@ public interface SecondmentRecordService extends IService<SecondmentRecordEntity
     List<SecondmentRecordDTO> selectSecondmentRecord();
 
     /**
-     * 查询
+     * 借调_列表
      * @param conditionsQueryDTO 查询条件
      *
      * @return Responses<List<QueryResultsDTO>> 条件查询借调记录后的结果

@@ -24,4 +24,12 @@ public interface SysMenuService extends IService<SysMenuEntity> {
      * @return 菜单树
      **/
     Responses<List<SysMenuDTO>> tree(String roleCode);
+
+    /**
+     * 有标记的菜单树
+     * @param roleCode 角色编号
+     *
+     * @return 有标记的菜单树
+     **/
+    List<SysMenuDTO> treeDetail(String roleCode);
 }

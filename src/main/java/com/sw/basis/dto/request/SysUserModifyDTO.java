@@ -81,7 +81,7 @@ public class SysUserModifyDTO {
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 
-    @ApiModelProperty(value = "是否删除;0表示未删除，1表示删除")
-    private Integer delFlag;
+    @ApiModelProperty(value = "类型；0，用户；1，职级；2,岗位")
+    private Integer types;
 
 }

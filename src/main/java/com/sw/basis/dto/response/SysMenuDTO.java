@@ -42,6 +42,9 @@ public class SysMenuDTO {
     @ApiModelProperty(value = "数据权限")
     private Integer dataRole;
 
+    @ApiModelProperty(value = "是否选中;true,选中;false,未选中")
+    private Boolean isCheck;
+
     @ApiModelProperty(value = "子集")
     private List<SysMenuDTO> children;
 

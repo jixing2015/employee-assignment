@@ -53,6 +53,9 @@ public class SysRoleDTO {
     @ApiModelProperty(value = "状态;0已启用,1已停用")
     private Integer state;
 
+    @ApiModelProperty(value = "权限树")
+    List<SysMenuDTO> menuTree;
+
     @ApiModelProperty(value = "授权用户")
     List<SysUserModifyDTO> userList;
 

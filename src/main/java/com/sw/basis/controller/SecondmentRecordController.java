@@ -1,7 +1,6 @@
 package com.sw.basis.controller;
 
 
-import com.sw.basis.annotation.Log;
 import com.sw.basis.dto.request.ConditionsQueryDTO;
 import com.sw.basis.dto.request.SecondmentIncreasedOrModifyDTO;
 import com.sw.basis.dto.response.QueryResultsDTO;
@@ -32,9 +31,9 @@ public class SecondmentRecordController {
     SecondmentRecordService secondmentRecordService;
 
 
-    private static final String SELECT = "查询借调记录";
-    @Log(desc = SELECT, type = Log.LOG_TYPE.SELECT)
-    @ApiOperation(value = "借调记录查询")
+    private static final String SELECT = "借调历史记录";
+//    @Log(desc = SELECT, type = Log.LOG_TYPE.SELECT)
+    @ApiOperation(value = SELECT)
     @PostMapping("/secondmentInquiry")
     public Responses<List<SecondmentRecordDTO>> secondmentInquiry () {
         List<SecondmentRecordDTO> secondmentRecordEntityList = secondmentRecordService.selectSecondmentRecord();
@@ -43,9 +42,9 @@ public class SecondmentRecordController {
 
 
 
-    private static final String CONDITIONS_QUERY = "借调记录条件查询";
-    @Log(desc = CONDITIONS_QUERY, type = Log.LOG_TYPE.SELECT)
-    @ApiOperation(value = "借调记录条件查询")
+    private static final String CONDITIONS_QUERY = "借调_列表";
+//    @Log(desc = CONDITIONS_QUERY, type = Log.LOG_TYPE.SELECT)
+    @ApiOperation(value = CONDITIONS_QUERY)
     @PostMapping("/loanRecordConditionQuery")
     public Responses<List<QueryResultsDTO>> loanRecordConditionQuery (@RequestBody ConditionsQueryDTO conditionsQueryDTO) {
         return secondmentRecordService.loanRecordConditionQuery(conditionsQueryDTO);
@@ -53,17 +52,17 @@ public class SecondmentRecordController {
 
 
     private static final String CONDITIONS_ADD = "借调记录增加或修改";
-    @Log(desc = CONDITIONS_ADD, type = Log.LOG_TYPE.ADD)
-    @ApiOperation(value = "借调记录增加或修改")
+//    @Log(desc = CONDITIONS_ADD, type = Log.LOG_TYPE.ADD)
+    @ApiOperation(value = CONDITIONS_ADD)
     @PostMapping("/secondmentIncreasedOrModify")
     public Responses<String> secondmentIncreasedOrModify (@RequestBody SecondmentIncreasedOrModifyDTO secondmentIncreasedOrModifyDTO) {
         return secondmentRecordService.secondmentIncreasedOrModify(secondmentIncreasedOrModifyDTO);
     }
 
 
-    private static final String CONDITIONS_DELET = "借调记录删除";
-    @Log(desc = CONDITIONS_DELET, type = Log.LOG_TYPE.DEL)
-    @ApiOperation(value = "借调记录删除")
+    private static final String CONDITIONS_DELETE = "借调记录删除";
+//    @Log(desc = CONDITIONS_DELETE, type = Log.LOG_TYPE.DEL)
+    @ApiOperation(value = CONDITIONS_DELETE)
     @PostMapping("/secondmentRecordDeleted")
     public Responses<String> secondmentRecordDeleted (@RequestParam(value = "id") Integer id) {
         return secondmentRecordService.secondmentRecordDeleted(id);
