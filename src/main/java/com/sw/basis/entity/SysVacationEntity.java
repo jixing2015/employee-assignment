@@ -6,44 +6,63 @@ import com.sw.basis.utils.SeqUtil;
 import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 
 /**
- * 派遣人员管理表
+ * 休假表
  *
  * @author jixing2000
- * @since 2022-07-22
+ * @since 2022-08-02
  */
+@TableName("sys_vacation")
 @Data
-@TableName("dispatch_peoples")
-public class DispatchPeoplesEntity {
+public class SysVacationEntity {
 
     /**
      * 主键
      **/
     private Integer id;
     /**
-     * 派遣订单号
+     * 请假单编号
      **/
-    private String orderId;
+    private String lvleavereqReqid;
     /**
-     * 用户编号
+     * 员工编号
      **/
-    private String userCode;
+    private String lvleavereqEmpid;
     /**
-     * 用户名称
+     * 开始日期
      **/
-    private String userName;
+    private Date lvleavereqBedate;
     /**
-     * 派遣成本
+     * 结束日期
      **/
-    private BigDecimal dispatchCost;
+    private Date lvleavereqEdate;
     /**
-     * 结算方式
+     * 是否全天
      **/
-    private String settlement;
+    private Integer lvleavereqBtype;
+    /**
+     * 开始时间1
+     **/
+    private Date lvleavereqBbtime;
+    /**
+     * 结束时间1
+     **/
+    private Date lvleavereqBetime;
+    /**
+     * 开始时间2
+     **/
+    private Date lvleavereqEbtime;
+    /**
+     * 结束时间2
+     **/
+    private Date lvleavereqEetime;
+    /**
+     * 小时数
+     **/
+    private Integer lvleavereqTotalhours;
     /**
      * 创建人
      **/
@@ -70,7 +89,7 @@ public class DispatchPeoplesEntity {
      **/
     public void preInsert() {
         try {
-            this.setId(SeqUtil.nextValue(SeqUtil.ServiceSeqName.DISPATCH_PEOPLES));
+            this.setId(SeqUtil.nextValue(SeqUtil.ServiceSeqName.SYS_VACATION));
             this.setDelFlag(CommonInfo.DelFlag.UN_DEL);
             this.setCreateTime(new Date());
             this.setCreateBy(LocalUserUtil.getCurrentUser() != null ? LocalUserUtil.getCurrentUser().getCode() : null);

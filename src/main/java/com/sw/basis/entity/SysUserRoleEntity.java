@@ -6,9 +6,7 @@ import com.sw.basis.utils.LocalUserUtil;
 import com.sw.basis.utils.SeqUtil;
 import com.sw.basis.utils.restful.CommonInfo;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -19,12 +17,9 @@ import java.util.Date;
  * @author jixing2000
  * @since 2022-07-07
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
 @TableName("sys_user_role")
-public class SysUserRoleEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@Data
+public class SysUserRoleEntity {
 
     /**
      * 主键

@@ -2,10 +2,13 @@ package com.sw.basis.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sw.basis.dto.api.ProjectDTO;
+import com.sw.basis.dto.api.ProjectMembersDTO;
 import com.sw.basis.dto.request.ProjectInformationDTO;
 import com.sw.basis.dto.request.ProjectModifyDTO;
 import com.sw.basis.entity.ProjectEntity;
+import com.sw.basis.entity.ProjectMembersEntity;
 import com.sw.basis.mapper.ProjectMapper;
+import com.sw.basis.service.ProjectMembersService;
 import com.sw.basis.service.ProjectService;
 import com.sw.basis.utils.Responses;
 import org.springframework.beans.BeanUtils;
@@ -14,6 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -28,6 +32,8 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
 
     @Resource
     ProjectMapper projectMapper;
+    @Resource
+    ProjectMembersService projectMembersService;
 
     /**
      * 项目派遣-新增
@@ -81,6 +87,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
     @Override
     public void pushProject(List<ProjectDTO> dtoList) {
         List<ProjectEntity> list = new ArrayList<>();
+        List<ProjectMembersDTO> membersList = new ArrayList<>();
         for(ProjectDTO dto : dtoList){
             ProjectEntity entity = new ProjectEntity();
             entity.preInsert();
@@ -101,8 +108,17 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
             entity.setPmprojectCedperson(dto.getPmprojectCedperson());
             entity.setPmprojectPartner(dto.getPmprojectPartner());
             list.add(entity);
+            membersList.addAll(dto.getMembersList());
         }
+        //存储或更新项目信息
         this.saveOrUpdateBatch(list);
+        //存储或更新项目组成员信息
+        List<ProjectMembersEntity> projectMembersEntityList = membersList.stream().map(projectMembersDTO -> {
+            ProjectMembersEntity projectMembersEntity = new ProjectMembersEntity();
+            BeanUtils.copyProperties(projectMembersDTO,projectMembersEntity);
+            return projectMembersEntity;
+        }).collect(Collectors.toList());
+        projectMembersService.saveOrUpdateBatch(projectMembersEntityList);
     }
 
 }

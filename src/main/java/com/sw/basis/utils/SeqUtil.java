@@ -16,6 +16,8 @@ public class SeqUtil {
 	public interface ServiceSeqName {
 
 		String DISPATCH_RECORD = "dispatch_record";
+		String DISPATCH_PROJECT = "dispatch_project";
+		String DISPATCH_PEOPLES = "dispatch_peoples";
 		String FLOW = "flow";
 		String PROJECT = "project";
 		String SECONDMENT_RECORD = "secondment_record";
@@ -34,6 +36,7 @@ public class SeqUtil {
 		String BUSINESS_LINE = "business_line";
 		String RANK_RATE = "rank_rate";
 		String SECONDED_PERSONNEL = "seconded_personnel";
+		String SYS_VACATION = "sys_vacation";
 
 
 	}

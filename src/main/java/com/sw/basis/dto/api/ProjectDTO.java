@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -65,4 +66,7 @@ public class ProjectDTO {
 
     @ApiModelProperty(value = "负责合伙人")
     private String pmprojectPartner;
+
+    @ApiModelProperty(value = "项目组成员集合")
+    private List<ProjectMembersDTO> membersList;
 }

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sw.basis.dto.DefinedErrorEnum;
 import com.sw.basis.dto.ValidateVO;
+import com.sw.basis.dto.api.EmployeeAssignmentDTO;
 import com.sw.basis.dto.query.personnelDimensionPageDTO;
 import com.sw.basis.dto.query.projectDimensionPageDTO;
 import com.sw.basis.dto.request.DispatchDTO;
@@ -22,12 +23,14 @@ import com.sw.basis.service.DispatchRecordService;
 import com.sw.basis.service.FlowService;
 import com.sw.basis.utils.Responses;
 import com.sw.basis.utils.SerialNumberUtil;
+import com.sw.basis.utils.exception.MyException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,7 +73,7 @@ public class DispatchRecordServiceImpl extends ServiceImpl<DispatchRecordMapper,
     }
 
     /**
-     * 项目派遣-人员维度-分页列表
+     * 项目派遣-项目维度-分页列表
      *
      * @param dto 查询条件
      * @return 分页列表
@@ -176,5 +179,48 @@ public class DispatchRecordServiceImpl extends ServiceImpl<DispatchRecordMapper,
         return null;
     }
 
+    /**
+     * 同步派遣记录
+     *
+     * @param dtoList 派遣记录集合
+     **/
+    @Override
+    public void pushDispatchRecord(List<EmployeeAssignmentDTO> dtoList) {
+        if(dtoList == null || dtoList.size() == 0){
+            throw new MyException("派遣记录不能为空！");
+        }
+        final int maxNum = 1000;
+        if(dtoList.size() > maxNum){
+            throw new MyException("派遣记录最大"+maxNum+"条，请分批同步！");
+        }
+        List<DispatchRecordEntity> list = new ArrayList<>();
+        List<DispatchProjectEntity> dispatchProjectEntityList = new ArrayList<>();
+        List<DispatchPeoplesEntity> dispatchPeoplesEntityList = new ArrayList<>();
+        Date date = new Date();
+        for(EmployeeAssignmentDTO dto : dtoList){
+            DispatchRecordEntity dispatchRecordEntity = new DispatchRecordEntity();
+            dispatchRecordEntity.preInsert();
+            BeanUtils.copyProperties(dto,dispatchRecordEntity);
+            list.add(dispatchRecordEntity);
+            List<DispatchProjectEntity> tempDispatchProjectList = dto.getProjectList().stream().map(dispatchProjectApiDTO -> {
+                DispatchProjectEntity dispatchProjectEntity = new DispatchProjectEntity();
+                BeanUtils.copyProperties(dispatchProjectApiDTO,dispatchProjectEntity);
+                return dispatchProjectEntity;
+            }).collect(Collectors.toList());
+            List<DispatchPeoplesEntity> tempDispatchPeoplesList = dto.getUserList().stream().map(dispatchPeoplesApiDTO -> {
+                DispatchPeoplesEntity dispatchPeoplesEntity = new DispatchPeoplesEntity();
+                BeanUtils.copyProperties(dispatchPeoplesApiDTO,dispatchPeoplesEntity);
+                return dispatchPeoplesEntity;
+            }).collect(Collectors.toList());
+            dispatchProjectEntityList.addAll(tempDispatchProjectList);
+            dispatchPeoplesEntityList.addAll(tempDispatchPeoplesList);
+        }
+//        类锁
+//        synchronized (DispatchRecordServiceImpl.class) {
+            this.saveOrUpdateBatch(list);
+            dispatchProjectService.saveOrUpdateBatch(dispatchProjectEntityList);
+            dispatchPeoplesService.saveOrUpdateBatch(dispatchPeoplesEntityList);
+//        }
+    }
 
 }

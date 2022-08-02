@@ -8,7 +8,7 @@ import java.util.Date;
 
 
 /**
- * 派遣项目关联表
+ * 派遣项目关联表ModifyDTO
  *
  * @author jixing2000
  * @since 2022-07-22

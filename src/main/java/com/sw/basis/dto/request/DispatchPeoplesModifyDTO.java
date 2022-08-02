@@ -4,11 +4,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 
 /**
- * 派遣人员管理表
+ * 派遣人员管理表 ModifyDTO
  *
  * @author jixing2000
  * @since 2022-07-22
@@ -28,6 +29,12 @@ public class DispatchPeoplesModifyDTO {
 
     @ApiModelProperty(value = "用户名称")
     private String userName;
+
+    @ApiModelProperty(value = "派遣成本")
+    private BigDecimal dispatchCost;
+
+    @ApiModelProperty(value = "结算方式")
+    private String settlement;
 
     @ApiModelProperty(value = "创建人")
     private String createBy;

@@ -42,6 +42,10 @@ public class PushInController {
     SysUserService sysUserService;
     @Resource
     ProjectService projectService;
+    @Resource
+    SysVacationService sysVacationService;
+    @Resource
+    DispatchRecordService dispatchRecordService;
 
     final static String PUSH_ORGANIZATION = "同步组织机构信息";
     @Log(desc = PUSH_ORGANIZATION, type = Log.LOG_TYPE.ADD_OR_UPDATE)
@@ -103,6 +107,24 @@ public class PushInController {
     @PostMapping("pushProject")
     public Responses<String> pushProject (@RequestBody List<ProjectDTO> dtoList) {
         projectService.pushProject(dtoList);
+        return Responses.success();
+    }
+
+    final static String PUSH_VACATION = "同步休假信息";
+    @Log(desc = PUSH_VACATION, type = Log.LOG_TYPE.ADD_OR_UPDATE)
+    @ApiOperation(value = PUSH_VACATION)
+    @PostMapping("pushVacation")
+    public Responses<String> pushVacation (@RequestBody List<VacationDTO> dtoList) {
+        sysVacationService.pushVacation(dtoList);
+        return Responses.success();
+    }
+
+    final static String PUSH_DISPATCH_RECORD = "同步派遣记录";
+    @Log(desc = PUSH_DISPATCH_RECORD, type = Log.LOG_TYPE.ADD_OR_UPDATE)
+    @ApiOperation(value = PUSH_DISPATCH_RECORD)
+    @PostMapping("pushDispatchRecord")
+    public Responses<String> pushDispatchRecord (@RequestBody List<EmployeeAssignmentDTO> dtoList) {
+        dispatchRecordService.pushDispatchRecord(dtoList);
         return Responses.success();
     }
 }

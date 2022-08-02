@@ -1,7 +1,7 @@
 package com.sw.basis.mapper;
 
-import com.sw.basis.entity.DispatchRecordEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.sw.basis.entity.DispatchRecordEntity;
 
 /**
  * <p>

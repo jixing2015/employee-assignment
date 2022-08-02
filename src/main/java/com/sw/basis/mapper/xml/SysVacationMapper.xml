@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sw.basis.mapper.SysVacationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sw.basis.entity.SysVacationEntity">
+        <id column="id" property="id" />
+        <result column="lvleavereq_reqid" property="lvleavereqReqid" />
+        <result column="lvleavereq_empid" property="lvleavereqEmpid" />
+        <result column="lvleavereq_bedate" property="lvleavereqBedate" />
+        <result column="lvleavereq_edate" property="lvleavereqEdate" />
+        <result column="lvleavereq_btype" property="lvleavereqBtype" />
+        <result column="lvleavereq_bbtime" property="lvleavereqBbtime" />
+        <result column="lvleavereq_betime" property="lvleavereqBetime" />
+        <result column="lvleavereq_ebtime" property="lvleavereqEbtime" />
+        <result column="lvleavereq_eetime" property="lvleavereqEetime" />
+        <result column="lvleavereq_totalhours" property="lvleavereqTotalhours" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+</mapper>

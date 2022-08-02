@@ -2,12 +2,15 @@ package com.sw.basis.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sw.basis.dto.api.EmployeeAssignmentDTO;
 import com.sw.basis.dto.query.personnelDimensionPageDTO;
 import com.sw.basis.dto.query.projectDimensionPageDTO;
 import com.sw.basis.dto.request.DispatchDTO;
 import com.sw.basis.dto.response.DispatchRecordDTO;
 import com.sw.basis.entity.DispatchRecordEntity;
 import com.sw.basis.utils.Responses;
+
+import java.util.List;
 
 /**
  * <p>
@@ -28,7 +31,7 @@ public interface DispatchRecordService extends IService<DispatchRecordEntity> {
     Responses<IPage<DispatchRecordDTO>> pageByPersonnelDimension(personnelDimensionPageDTO dto);
 
     /**
-     * 项目派遣-人员维度-分页列表
+     * 项目派遣-项目维度-分页列表
      * @param dto 查询条件
      *
      * @return 分页列表
@@ -59,4 +62,10 @@ public interface DispatchRecordService extends IService<DispatchRecordEntity> {
      **/
     Responses<String> skipAndDispatchOther(DispatchDTO dto);
 
+    /**
+     * 同步派遣记录
+     * @param dtoList 派遣记录集合
+     *
+     **/
+    void pushDispatchRecord(List<EmployeeAssignmentDTO> dtoList);
 }
