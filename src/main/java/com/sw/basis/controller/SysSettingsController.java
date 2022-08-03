@@ -2,6 +2,7 @@ package com.sw.basis.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.sw.basis.annotation.Log;
 import com.sw.basis.dto.query.SysSettingsPageDTO;
 import com.sw.basis.dto.request.SysSettingsModifyDTO;
 import com.sw.basis.dto.response.SysSettingsDTO;
@@ -37,7 +38,7 @@ public class SysSettingsController {
     SysSettingsService sysSettingsService;
 
     final static String PAGE = "系统设置_列表";
-//    @Log(desc = PAGE, type = Log.LOG_TYPE.SELECT)
+    @Log(desc = PAGE, type = Log.LOG_TYPE.SELECT)
     @ApiOperation(value = PAGE)
     @PostMapping(value = "/page")
     public Responses<IPage<SysSettingsDTO>> page(@RequestBody SysSettingsPageDTO dto){
@@ -45,7 +46,7 @@ public class SysSettingsController {
     }
 
     final static String ADD = "系统设置_新增";
-//    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
+    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
     @ApiOperation(value = ADD)
     @PostMapping(value = "/add")
     public Responses<String> add(@RequestBody SysSettingsModifyDTO dto){
@@ -53,7 +54,7 @@ public class SysSettingsController {
     }
 
     final static String UPDATEBYID = "系统设置_根据id修改";
-//    @Log(desc = UPDATEBYID, type = Log.LOG_TYPE.UPDATE)
+    @Log(desc = UPDATEBYID, type = Log.LOG_TYPE.UPDATE)
     @ApiOperation(value = UPDATEBYID)
     @PostMapping(value = "/updateById")
     public Responses<String> updateById(@RequestBody SysSettingsModifyDTO dto){
@@ -61,7 +62,7 @@ public class SysSettingsController {
     }
 
     final static String DEL = "系统设置_删除";
-//    @Log(desc = DEL, type = Log.LOG_TYPE.DEL)
+    @Log(desc = DEL, type = Log.LOG_TYPE.DEL)
     @ApiOperation(value = DEL)
     @PostMapping(value = "/del")
     public Responses<String> del(@RequestBody IdVO vo){
@@ -69,7 +70,7 @@ public class SysSettingsController {
     }
 
     final static String DETAIL = "系统设置_详情";
-//    @Log(desc = DETAIL, type = Log.LOG_TYPE.SELECT)
+    @Log(desc = DETAIL, type = Log.LOG_TYPE.SELECT)
     @ApiOperation(value = DETAIL)
     @PostMapping(value = "/detail")
     public Responses<SysSettingsDTO> detail(@RequestBody CodeVO vo){

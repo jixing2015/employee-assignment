@@ -119,7 +119,7 @@ public class LogAspect {
 	 */
 	@AfterThrowing(value = "pointcut()", throwing = "e")
 	public void afterException(JoinPoint joinPoint, Exception e) {
-		addLog(joinPoint, getDesc(joinPoint) +"["+ e.getMessage()+"]");
+//		addLog(joinPoint, getDesc(joinPoint) +"["+ e.getMessage()+"]");
 	}
 
 	private String getDesc(JoinPoint joinPoint) {

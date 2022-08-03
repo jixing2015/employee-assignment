@@ -30,7 +30,7 @@ import java.util.List;
  * @author jixing2000
  * @since 2022-07-07
  */
-@Api(tags = "用户接口")
+@Api(tags = "用户管理")
 @RequestMapping("/sysUser")
 @RestController
 public class SysUserController {

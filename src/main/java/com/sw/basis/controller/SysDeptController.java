@@ -1,6 +1,7 @@
 package com.sw.basis.controller;
 
 
+import com.sw.basis.annotation.Log;
 import com.sw.basis.dto.request.DepartmentInformationDTO;
 import com.sw.basis.service.SysDeptService;
 import com.sw.basis.utils.Responses;
@@ -22,7 +23,7 @@ import javax.validation.Valid;
  * @author donglinmo
  * @since 2022-07-21
  */
-@Api(tags = "部门信息")
+@Api(tags = "部门管理")
 @RestController
 @RequestMapping("/sysDept")
 public class SysDeptController {
@@ -31,9 +32,8 @@ public class SysDeptController {
     SysDeptService sysDeptService;
 
     private final static String ADD = "接受信天游部门信息";
-
-//    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
     @ApiOperation(value = ADD)
+    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
     @PostMapping("/departmentInformation")
     public Responses<String> departmentInformation (@RequestBody @Valid DepartmentInformationDTO departmentInformationDTO) {
         if (departmentInformationDTO == null) {

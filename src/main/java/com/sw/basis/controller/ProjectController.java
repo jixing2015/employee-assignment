@@ -1,6 +1,7 @@
 package com.sw.basis.controller;
 
 
+import com.sw.basis.annotation.Log;
 import com.sw.basis.dto.request.ProjectInformationDTO;
 import com.sw.basis.dto.request.ProjectModifyDTO;
 import com.sw.basis.service.ProjectService;
@@ -31,7 +32,7 @@ public class ProjectController {
     ProjectService projectService;
 
     final static String ADD = "项目表_新增";
-//    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
+    @Log(desc = ADD, type = Log.LOG_TYPE.ADD)
     @ApiOperation(value = ADD)
     @PostMapping(value = "/add")
     public Responses<String> add(@RequestBody ProjectModifyDTO dto){
@@ -40,7 +41,7 @@ public class ProjectController {
 
 
     final static String ACCEPT = "接受信天游项目信息";
-//    @Log(desc = ACCEPT, type = Log.LOG_TYPE.ADD)
+    @Log(desc = ACCEPT, type = Log.LOG_TYPE.ADD)
     @ApiOperation(value = ACCEPT)
     @PostMapping("/accept")
     public Responses<String> accept(@RequestBody ProjectInformationDTO projectInformationDTO) {
