@@ -6,6 +6,7 @@ import com.sw.basis.dto.api.UserDTO;
 import com.sw.basis.dto.query.SysUserQuery;
 import com.sw.basis.dto.request.SysUserModifyDTO;
 import com.sw.basis.dto.request.UserInformationDTO;
+import com.sw.basis.dto.response.SysDictDTO;
 import com.sw.basis.dto.response.SysUserDTO;
 import com.sw.basis.entity.SysUserEntity;
 import com.sw.basis.utils.Responses;
@@ -60,4 +61,27 @@ public interface SysUserService extends IService<SysUserEntity> {
      *
      **/
     void pushUser(List<UserDTO> dtoList);
+
+    /**
+     *  用户职级字典
+     *
+     * @return 字典集合
+     **/
+    Responses<List<SysDictDTO>> userLevelDict();
+
+    /**
+     * 根据职级查询用户列表
+     * @param levelCode 职级编号
+     *
+     * @return 用户列表
+     **/
+    Responses<List<SysUserDTO>> getUserListByLevel(String levelCode);
+
+    /**
+     * 根据角色查询用户列表
+     * @param roleCode 角色编号
+     *
+     * @return 用户列表
+     **/
+    Responses<List<SysUserDTO>> getUserListByRole(String roleCode);
 }

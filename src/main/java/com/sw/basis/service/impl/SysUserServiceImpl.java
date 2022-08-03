@@ -8,6 +8,7 @@ import com.sw.basis.dto.api.UserDTO;
 import com.sw.basis.dto.query.SysUserQuery;
 import com.sw.basis.dto.request.SysUserModifyDTO;
 import com.sw.basis.dto.request.UserInformationDTO;
+import com.sw.basis.dto.response.SysDictDTO;
 import com.sw.basis.dto.response.SysUserDTO;
 import com.sw.basis.entity.SysUserEntity;
 import com.sw.basis.mapper.SysUserMapper;
@@ -130,5 +131,63 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
             list.add(entity);
         }
         this.saveOrUpdateBatch(list);
+    }
+
+    /**
+     * 用户职级字典
+     *
+     * @return 字典集合
+     **/
+    @Override
+    public Responses<List<SysDictDTO>> userLevelDict() {
+        QueryWrapper<SysUserEntity> wrapper = new QueryWrapper<>();
+        wrapper.select("DISTINCT level_code,level_name").orderByAsc("level_code");
+        List<SysUserEntity> list = sysUserMapper.selectList(wrapper);
+        List<SysDictDTO> dictList = new ArrayList<>();
+        for(SysUserEntity entity : list){
+            SysDictDTO dto = new SysDictDTO();
+            dto.setCode("userLevel");
+            dto.setName("职级字典");
+            dto.setItemKey(entity.getLevelCode());
+            dto.setItemValue(entity.getLevelName());
+            dictList.add(dto);
+        }
+        return Responses.success(dictList);
+    }
+
+    /**
+     * 根据职级查询用户列表
+     *
+     * @param levelCode 职级编号
+     * @return 用户列表
+     **/
+    @Override
+    public Responses<List<SysUserDTO>> getUserListByLevel(String levelCode) {
+        QueryWrapper<SysUserEntity> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(SysUserEntity::getLevelCode,levelCode);
+        List<SysUserEntity> list = sysUserMapper.selectList(wrapper);
+        return Responses.success(list.stream().map(sysUserEntity -> {
+                SysUserDTO sysUserDTO = new SysUserDTO();
+                BeanUtils.copyProperties(sysUserEntity,sysUserDTO);
+                return sysUserDTO;
+            }).collect(Collectors.toList())
+        );
+    }
+
+    /**
+     * 根据角色查询用户列表
+     *
+     * @param roleCode 角色编号
+     * @return 用户列表
+     **/
+    @Override
+    public Responses<List<SysUserDTO>> getUserListByRole(String roleCode) {
+        List<SysUserEntity> list = sysUserMapper.getUserListByDeptRole(roleCode);
+        return Responses.success(list.stream().map(sysUserEntity -> {
+                SysUserDTO sysUserDTO = new SysUserDTO();
+                BeanUtils.copyProperties(sysUserEntity,sysUserDTO);
+                return sysUserDTO;
+            }).collect(Collectors.toList())
+        );
     }
 }
