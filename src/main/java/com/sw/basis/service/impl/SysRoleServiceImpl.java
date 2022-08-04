@@ -11,6 +11,7 @@ import com.sw.basis.entity.SysRoleEntity;
 import com.sw.basis.entity.SysRoleMenuEntity;
 import com.sw.basis.entity.SysUserRoleEntity;
 import com.sw.basis.mapper.SysRoleMapper;
+import com.sw.basis.mapper.SysRoleMenuMapper;
 import com.sw.basis.mapper.SysUserRoleMapper;
 import com.sw.basis.service.SysMenuService;
 import com.sw.basis.service.SysRoleMenuService;
@@ -51,6 +52,8 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
     SysUserRoleMapper sysUserRoleMapper;
     @Resource
     SysMenuService sysMenuService;
+    @Resource
+    SysRoleMenuMapper sysRoleMenuMapper;
 
     /**
      * 岗位管理_列表
@@ -257,7 +260,18 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
         if(sysRoleEntityList != null && sysRoleEntityList.size() > 0){
             BeanUtils.copyProperties(sysRoleEntityList.get(0),sysRoleDTO);
             //查询权限
-            List<SysMenuDTO> sysMenuDTOList = sysMenuService.treeDetail(sysRoleDTO.getRoleCode());
+//            List<SysMenuDTO> sysMenuDTOList = sysMenuService.treeDetail(sysRoleDTO.getRoleCode());
+            QueryWrapper<SysRoleMenuEntity> roleMenuWrapper = new QueryWrapper<>();
+            roleMenuWrapper.lambda().eq(SysRoleMenuEntity::getDelFlag, StateConstant.UN_DEL);
+            roleMenuWrapper.lambda().eq(SysRoleMenuEntity::getRoleCode, sysRoleDTO.getRoleCode());
+            List<SysRoleMenuEntity> sysRoleMenuEntityList = sysRoleMenuMapper.selectList(roleMenuWrapper);
+            List<SysMenuDTO> sysMenuDTOList = new ArrayList<>();
+            for(SysRoleMenuEntity entity : sysRoleMenuEntityList){
+                SysMenuDTO sysMenuDTO = new SysMenuDTO();
+                sysMenuDTO.setMenuCode(entity.getMenuCode());
+                sysMenuDTO.setDataRole(entity.getDataRole());
+                sysMenuDTOList.add(sysMenuDTO);
+            }
             sysRoleDTO.setMenuTree(sysMenuDTOList);
             //查询岗位用户
             List<SysUserModifyDTO> sysUserModifyDTOList = sysUserRoleMapper.getRoleUserList(sysRoleDTO.getRoleCode());
@@ -277,8 +291,8 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
                     }
                 }
                 sysRoleDTO.setUserList(userList);
-                sysRoleDTO.setUserList(levelUserList);
-                sysRoleDTO.setUserList(roleUserList);
+                sysRoleDTO.setByLevelUserList(levelUserList);
+                sysRoleDTO.setByRoleUserList(roleUserList);
             }
         }else {
             Responses.error("未查询到岗位记录");
