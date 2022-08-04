@@ -10,6 +10,7 @@ import com.sw.basis.dto.request.SysUserModifyDTO;
 import com.sw.basis.dto.request.UserInformationDTO;
 import com.sw.basis.dto.response.SysDictDTO;
 import com.sw.basis.dto.response.SysUserDTO;
+import com.sw.basis.entity.DeptRolesEntity;
 import com.sw.basis.entity.SysUserEntity;
 import com.sw.basis.mapper.SysUserMapper;
 import com.sw.basis.service.SysUserService;
@@ -158,13 +159,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     /**
      * 根据职级查询用户列表
      *
-     * @param levelCode 职级编号
+     * @param levelCodeList 职级编号集合
      * @return 用户列表
      **/
     @Override
-    public Responses<List<SysUserDTO>> getUserListByLevel(String levelCode) {
+    public Responses<List<SysUserDTO>> getUserListByLevel(List<String> levelCodeList) {
         QueryWrapper<SysUserEntity> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(SysUserEntity::getLevelCode,levelCode);
+        wrapper.lambda().in(SysUserEntity::getLevelCode,levelCodeList);
         List<SysUserEntity> list = sysUserMapper.selectList(wrapper);
         return Responses.success(list.stream().map(sysUserEntity -> {
                 SysUserDTO sysUserDTO = new SysUserDTO();
@@ -177,12 +178,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     /**
      * 根据角色查询用户列表
      *
-     * @param roleCode 角色编号
+     * @param roleCodeList 角色编号集合
      * @return 用户列表
      **/
     @Override
-    public Responses<List<SysUserDTO>> getUserListByRole(String roleCode) {
-        List<SysUserEntity> list = sysUserMapper.getUserListByDeptRole(roleCode);
+    public Responses<List<SysUserDTO>> getUserListByRole(List<String> roleCodeList) {
+        QueryWrapper<DeptRolesEntity> wrapper = new QueryWrapper<>();
+        wrapper.lambda().in(DeptRolesEntity::getAsorgrole,roleCodeList);
+        List<SysUserEntity> list = sysUserMapper.getUserListByDeptRole(wrapper);
         return Responses.success(list.stream().map(sysUserEntity -> {
                 SysUserDTO sysUserDTO = new SysUserDTO();
                 BeanUtils.copyProperties(sysUserEntity,sysUserDTO);

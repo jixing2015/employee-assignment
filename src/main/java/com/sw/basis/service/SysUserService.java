@@ -71,17 +71,17 @@ public interface SysUserService extends IService<SysUserEntity> {
 
     /**
      * 根据职级查询用户列表
-     * @param levelCode 职级编号
+     * @param levelCodeList 职级编号集合
      *
      * @return 用户列表
      **/
-    Responses<List<SysUserDTO>> getUserListByLevel(String levelCode);
+    Responses<List<SysUserDTO>> getUserListByLevel(List<String> levelCodeList);
 
     /**
      * 根据角色查询用户列表
-     * @param roleCode 角色编号
+     * @param roleCodeList 角色编号集合
      *
      * @return 用户列表
      **/
-    Responses<List<SysUserDTO>> getUserListByRole(String roleCode);
+    Responses<List<SysUserDTO>> getUserListByRole(List<String> roleCodeList);
 }

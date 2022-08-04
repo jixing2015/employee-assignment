@@ -28,7 +28,25 @@ public class LocalUserUtil {
 	 */
 	public static SysUserEntity getCurrentUser() {
 		if(USER_ENTITY_THREAD_LOCAL.get() == null){
-			throw new MyException(ResultCode.USER_NOT_FOUND.code,ResultCode.USER_NOT_FOUND.message);
+			SysUserEntity user = new SysUserEntity();
+			user.setCode("test");
+			user.setName("测试");
+			user.setPlageCode("plage01");
+			user.setPlageName("板块01");
+			user.setAreaCode("area01");
+			user.setAreaName("北京");
+			user.setDeptCode("dept01");
+			user.setDeptName("部门01");
+			user.setLineCode("line01");
+			user.setLineName("条线01");
+			user.setLevelCode("0");
+			user.setLevelName("职级一");
+			user.setRegister("0");
+			user.setExpertType("0");
+			user.setState(0);
+			user.setHrempTalentbase("base01");
+
+//			throw new MyException(ResultCode.USER_NOT_FOUND.code,ResultCode.USER_NOT_FOUND.message);
 		}
 		return USER_ENTITY_THREAD_LOCAL.get();
 	}
