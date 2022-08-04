@@ -25,10 +25,10 @@ public class SysRoleModifyDTO {
     @ApiModelProperty(value = "类型：0，普通角色；1,部门角色；2，岗位角色")
     private Integer roleType;
 
-    @ApiModelProperty(value = "角色编号")
+    @ApiModelProperty(value = "岗位编号")
     private String roleCode;
 
-    @ApiModelProperty(value = "角色名称")
+    @ApiModelProperty(value = "岗位名称")
     private String roleName;
 
     @ApiModelProperty(value = "状态;0已启用,1已停用")

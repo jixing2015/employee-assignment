@@ -2,7 +2,9 @@ package com.sw.basis.controller;
 
 
 import com.sw.basis.annotation.Log;
+import com.sw.basis.dto.query.DeptQuery;
 import com.sw.basis.dto.request.DepartmentInformationDTO;
+import com.sw.basis.dto.response.SysDictDTO;
 import com.sw.basis.service.SysDeptService;
 import com.sw.basis.utils.Responses;
 import io.swagger.annotations.Api;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * <p>
@@ -42,5 +45,36 @@ public class SysDeptController {
         return sysDeptService.insert(departmentInformationDTO);
     }
 
+    final String DEPT_DICT = "部门字典";
+    @ApiOperation(value = DEPT_DICT)
+    @Log(desc = DEPT_DICT, type = Log.LOG_TYPE.SELECT)
+    @PostMapping("/deptDict")
+    public Responses<List<SysDictDTO>> deptDict(@RequestBody DeptQuery deptQuery) {
+        return sysDeptService.deptDict(deptQuery);
+    }
+
+    final String PLAGE_DICT = "板块字典";
+    @ApiOperation(value = PLAGE_DICT)
+    @Log(desc = PLAGE_DICT, type = Log.LOG_TYPE.SELECT)
+    @PostMapping("/plageDict")
+    public Responses<List<SysDictDTO>> plageDict() {
+        return sysDeptService.plageDict();
+    }
+
+    final String AREA_DICT = "区域字典";
+    @ApiOperation(value = AREA_DICT)
+    @Log(desc = AREA_DICT, type = Log.LOG_TYPE.SELECT)
+    @PostMapping("/areaDict")
+    public Responses<List<SysDictDTO>> areaDict() {
+        return sysDeptService.areaDict();
+    }
+
+    final String LINE_DICT = "业务条线字典";
+    @ApiOperation(value = LINE_DICT)
+    @Log(desc = LINE_DICT, type = Log.LOG_TYPE.SELECT)
+    @PostMapping("/lineDict")
+    public Responses<List<SysDictDTO>> lineDict() {
+        return sysDeptService.lineDict();
+    }
 }
 

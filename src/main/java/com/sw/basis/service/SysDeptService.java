@@ -2,7 +2,9 @@ package com.sw.basis.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sw.basis.dto.api.OrganizationDTO;
+import com.sw.basis.dto.query.DeptQuery;
 import com.sw.basis.dto.request.DepartmentInformationDTO;
+import com.sw.basis.dto.response.SysDictDTO;
 import com.sw.basis.entity.SysDeptEntity;
 import com.sw.basis.utils.Responses;
 
@@ -39,4 +41,32 @@ public interface SysDeptService extends IService<SysDeptEntity> {
      *
      **/
     void pushOrganization(List<OrganizationDTO> dtoList);
+
+    /**
+     * 部门字典
+     *
+     * @return 字典集合
+     **/
+    Responses<List<SysDictDTO>> deptDict(DeptQuery deptQuery);
+
+    /**
+     * 板块字典
+     *
+     * @return 字典集合
+     **/
+    Responses<List<SysDictDTO>> plageDict();
+
+    /**
+     * 区域字典
+     *
+     * @return 字典集合
+     **/
+    Responses<List<SysDictDTO>> areaDict();
+
+    /**
+     * 业务条线字典
+     *
+     * @return 字典集合
+     **/
+    Responses<List<SysDictDTO>> lineDict();
 }
