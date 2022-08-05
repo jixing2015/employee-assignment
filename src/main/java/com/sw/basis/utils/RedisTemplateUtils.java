@@ -2,7 +2,7 @@ package com.sw.basis.utils;
 
 import com.google.gson.Gson;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * redis工具类
  * @author jixing2000
  */
-@Service
+@Component
 public class RedisTemplateUtils {
 
 	@Resource

@@ -11,6 +11,7 @@ import com.sw.basis.dto.response.SysUserDTO;
 import com.sw.basis.service.DeptRolesService;
 import com.sw.basis.service.SysUserService;
 import com.sw.basis.utils.Responses;
+import com.sw.basis.utils.vo.CodeListVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -84,8 +85,8 @@ public class SysUserController {
     @ApiOperation(value = GET_USER_LIST_BY_LEVEL,notes = "传职级编号集合")
     @Log(desc = GET_USER_LIST_BY_LEVEL, type = Log.LOG_TYPE.SELECT)
     @PostMapping("/getUserListByLevel")
-    public Responses<List<SysUserDTO>> getUserListByLevel(@RequestBody List<String> list) {
-        return sysUserService.getUserListByLevel(list);
+    public Responses<List<SysUserDTO>> getUserListByLevel(@RequestBody CodeListVO list) {
+        return sysUserService.getUserListByLevel(list.getCode());
     }
 
     final String DEPT_ROLES_DICT = "部门角色字典";
@@ -100,8 +101,8 @@ public class SysUserController {
     @ApiOperation(value = GET_USER_LIST_BY_ROLE,notes = "传角色编号集合")
     @Log(desc = GET_USER_LIST_BY_ROLE, type = Log.LOG_TYPE.SELECT)
     @PostMapping("/getUserListByRole")
-    public Responses<List<SysUserDTO>> getUserListByRole(@RequestBody List<String> list) {
-        return sysUserService.getUserListByRole(list);
+    public Responses<List<SysUserDTO>> getUserListByRole(@RequestBody CodeListVO list) {
+        return sysUserService.getUserListByRole(list.getCode());
     }
 }
 

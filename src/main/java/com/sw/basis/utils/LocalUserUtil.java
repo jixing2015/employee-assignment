@@ -41,8 +41,6 @@ public class LocalUserUtil {
 			user.setLineName("条线01");
 			user.setLevelCode("0");
 			user.setLevelName("职级一");
-			user.setRegister("0");
-			user.setExpertType("0");
 			user.setState(0);
 			user.setHrempTalentbase("base01");
 

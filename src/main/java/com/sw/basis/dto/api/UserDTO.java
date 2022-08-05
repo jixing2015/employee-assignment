@@ -38,4 +38,10 @@ public class UserDTO {
 
     @ApiModelProperty(value = "人才基地")
     private String hrempTalentbase;
+
+    @ApiModelProperty(value = "专长行业")
+    private String specialtyIndustry;
+
+    @ApiModelProperty(value = "专长业务类型")
+    private String specialtyBusinessType;
 }

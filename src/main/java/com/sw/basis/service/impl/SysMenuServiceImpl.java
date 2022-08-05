@@ -52,6 +52,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
         List<SysMenuDTO> tempMenuDTOList = list.stream().map(sysMenuEntity -> {
             SysMenuDTO dto = new SysMenuDTO();
             BeanUtils.copyProperties(sysMenuEntity,dto);
+            dto.setId(null);
             return dto;
         }).collect(Collectors.toList());
 

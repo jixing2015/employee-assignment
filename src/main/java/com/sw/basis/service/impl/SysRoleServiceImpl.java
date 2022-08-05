@@ -13,12 +13,12 @@ import com.sw.basis.entity.SysUserRoleEntity;
 import com.sw.basis.mapper.SysRoleMapper;
 import com.sw.basis.mapper.SysRoleMenuMapper;
 import com.sw.basis.mapper.SysUserRoleMapper;
-import com.sw.basis.service.SysMenuService;
 import com.sw.basis.service.SysRoleMenuService;
 import com.sw.basis.service.SysRoleService;
 import com.sw.basis.service.SysUserRoleService;
 import com.sw.basis.utils.LocalUserUtil;
 import com.sw.basis.utils.Responses;
+import com.sw.basis.utils.SerialNumberUtil;
 import com.sw.basis.utils.constant.StateConstant;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -50,8 +50,6 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
     SysUserRoleService sysUserRoleService;
     @Resource
     SysUserRoleMapper sysUserRoleMapper;
-    @Resource
-    SysMenuService sysMenuService;
     @Resource
     SysRoleMenuMapper sysRoleMenuMapper;
 
@@ -91,6 +89,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
         BeanUtils.copyProperties(dto,sysRoleEntity);
         sysRoleEntity.setState(StateConstant.ENABLE);
         sysRoleEntity.preInsert();
+        sysRoleEntity.setRoleCode(SerialNumberUtil.createRoleCode());
         sysRoleMapper.insert(sysRoleEntity);
         //增加岗位与权限关系
         List<SysMenuDTO> sysMenuDTOList = dto.getMenuTree();
@@ -268,6 +267,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
             List<SysMenuDTO> sysMenuDTOList = new ArrayList<>();
             for(SysRoleMenuEntity entity : sysRoleMenuEntityList){
                 SysMenuDTO sysMenuDTO = new SysMenuDTO();
+                sysMenuDTO.setId(entity.getId());
                 sysMenuDTO.setMenuCode(entity.getMenuCode());
                 sysMenuDTO.setDataRole(entity.getDataRole());
                 sysMenuDTOList.add(sysMenuDTO);

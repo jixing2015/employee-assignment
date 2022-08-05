@@ -4,7 +4,6 @@ import com.sw.basis.utils.constant.RedisConstant;
 import com.sw.basis.utils.exception.MyException;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +15,7 @@ import java.util.List;
 @Slf4j
 public class SerialNumberUtil {
 
-    @Resource
-    static RedisTemplateUtils redisUtils;
+    public static RedisTemplateUtils redisUtils = SpringUtil.getBean("redisTemplateUtils");
 
     /**
      * 生成订单号 公共方法
@@ -89,4 +87,49 @@ public class SerialNumberUtil {
         return orderId;
     }
 
+    /**
+     * 创建岗位编号
+     * 生成规则：审计：AU+4位流水号 造价：MC+4位流水号 税务：TA+4位流水号 咨询：CS+4位流水号
+     *
+     * @return java.lang.String
+     **/
+    public static String createRoleCode(){
+        //当前人板块
+        String plageCode = "";
+        String plageRedis = "";
+        if(LocalUserUtil.getCurrentUser() != null){
+            plageRedis = LocalUserUtil.getCurrentUser().getPlageCode();
+            //审计
+            if("1".equals(LocalUserUtil.getCurrentUser().getPlageCode())){
+                plageCode="AU";
+            }
+            //造价
+            else if("2".equals(LocalUserUtil.getCurrentUser().getPlageCode())){
+                plageCode="MC";
+            }
+            //税务
+            else if("3".equals(LocalUserUtil.getCurrentUser().getPlageCode())){
+                plageCode="TA";
+            }
+            //咨询
+            else if("4".equals(LocalUserUtil.getCurrentUser().getPlageCode())){
+                plageCode="CS";
+            }
+            else{
+                plageRedis = "test";
+                plageCode="TEST";
+            }
+        }
+        else{
+            plageRedis = "test";
+            plageCode="TEST";
+        }
+
+        List<String> strList = new ArrayList<>();
+        strList.add(plageCode);
+        long count = redisUtils.hincr(RedisConstant.ORDER_ID_SEQ,plageRedis,RedisConstant.APPLY_ID_BY);
+        Integer countDigit = 4;
+        String roleCode = createNumber(strList,count,countDigit);
+        return roleCode;
+    }
 }

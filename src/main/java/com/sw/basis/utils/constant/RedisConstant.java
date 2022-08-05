@@ -40,4 +40,9 @@ public interface RedisConstant {
      * Redis Key 发起的需求数量
      */
     String ORDER_ID_SEQ = "emp_ass_order_id";
+
+    /**
+     * Redis Key 岗位编号
+     */
+    String ROLE_ID_SEQ = "emp_ass_role_id";
 }

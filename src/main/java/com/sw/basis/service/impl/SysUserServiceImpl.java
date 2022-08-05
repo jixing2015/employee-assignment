@@ -54,6 +54,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         return result.convert(sysUserEntity -> {
             SysUserDTO sysUserDTO = new SysUserDTO();
             BeanUtils.copyProperties(sysUserEntity,sysUserDTO);
+            sysUserDTO.setId(null);
             return sysUserDTO;
         });
     }
@@ -168,9 +169,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         wrapper.lambda().in(SysUserEntity::getLevelCode,levelCodeList);
         List<SysUserEntity> list = sysUserMapper.selectList(wrapper);
         return Responses.success(list.stream().map(sysUserEntity -> {
-                SysUserDTO sysUserDTO = new SysUserDTO();
-                BeanUtils.copyProperties(sysUserEntity,sysUserDTO);
-                return sysUserDTO;
+            SysUserDTO sysUserDTO = new SysUserDTO();
+            BeanUtils.copyProperties(sysUserEntity,sysUserDTO);
+            sysUserDTO.setId(null);
+            return sysUserDTO;
             }).collect(Collectors.toList())
         );
     }
@@ -187,9 +189,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         wrapper.lambda().in(DeptRolesEntity::getAsorgrole,roleCodeList);
         List<SysUserEntity> list = sysUserMapper.getUserListByDeptRole(wrapper);
         return Responses.success(list.stream().map(sysUserEntity -> {
-                SysUserDTO sysUserDTO = new SysUserDTO();
-                BeanUtils.copyProperties(sysUserEntity,sysUserDTO);
-                return sysUserDTO;
+            SysUserDTO sysUserDTO = new SysUserDTO();
+            BeanUtils.copyProperties(sysUserEntity,sysUserDTO);
+            sysUserDTO.setId(null);
+            return sysUserDTO;
             }).collect(Collectors.toList())
         );
     }

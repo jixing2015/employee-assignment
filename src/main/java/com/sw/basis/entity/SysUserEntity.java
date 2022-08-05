@@ -93,14 +93,14 @@ public class SysUserEntity implements Serializable {
     private String levelName;
 
     /**
-     * 执业资格
+     * 专长行业
      */
-    private String register;
+    private String specialtyIndustry;
 
     /**
-     * 专业编号
+     * 专长业务类型
      */
-    private String expertType;
+    private String specialtyBusinessType;
 
     /**
      * 状态
